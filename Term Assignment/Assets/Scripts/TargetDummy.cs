@@ -9,4 +9,9 @@ public class TargetDummy : MonoBehaviour
 		Destroy(collision.gameObject);
 		Destroy(gameObject);
 	}
+
+	private void OnDisable()
+	{
+		GameManager.Instance.OnEnemyDeath();
+	}
 }
