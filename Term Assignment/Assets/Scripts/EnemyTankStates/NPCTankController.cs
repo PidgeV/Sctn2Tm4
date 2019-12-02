@@ -8,6 +8,7 @@ namespace Complete
     using UnityEngine.AI;
     using UnityEngine.UI;
     using System.Collections;
+    using System.Collections.Generic;
 
     public class NPCTankController : AdvancedFSM
     {
@@ -17,7 +18,7 @@ namespace Complete
         public static int WAYPOINT_DIST = 1;
 
         public int m_CharNumber = 1;                        // Used to identify which tank belongs to which character.  This is set by this tank's manager.
-        public SlotManager coverPositionsSlotManager;       
+        public SlotManager coverPositionsSlotManager;
         public NavMeshAgent navAgent;
         public Transform turret;
 
@@ -27,12 +28,12 @@ namespace Complete
         [HideInInspector]
         public bool receivedAttackCommand = false;
 
-      
+
         private Transform playerTransform;
         private GameObject[] pointList;
         private SlotManager playerSlotManager;
         private bool debugDraw;
-     
+
 
         public Transform GetPlayerTransform()
         {
@@ -104,23 +105,34 @@ namespace Complete
         {
         }
 
-		/// <summary>
-		/// Where we add our states
-		/// </summary>
+        /// <summary>
+        /// Where we add our states
+        /// </summary>
         private void ConstructFSM()
         {
+            List<Transform> points = new List<Transform>();
+
+            foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Waypoints"))
+            {
+                points.Add(gameObject.transform);
+            }
+
+            PatrollingState patrollingState = new PatrollingState(points.ToArray(), this);
+            patrollingState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
+
+            AddFSMState(patrollingState);
         }
-     
+
         private void OnEnable()
         {
-            if(navAgent)
+            if (navAgent)
                 navAgent.isStopped = false;
-            if(CurrentState != null)
+            if (CurrentState != null)
                 PerformTransition(Transition.Enable);
         }
         private void OnDisable()
         {
-           if (navAgent && navAgent.isActiveAndEnabled)
+            if (navAgent && navAgent.isActiveAndEnabled)
                 navAgent.isStopped = true;
         }
     }
