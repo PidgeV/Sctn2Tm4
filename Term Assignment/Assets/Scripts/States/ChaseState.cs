@@ -6,11 +6,11 @@ using Complete;
 
 public class ChaseState : FSMState
 {
-    SlotManager playerSlot;
+	SlotManager playerSlot;
 
-    int availableSlotIndex;
+	int availableSlotIndex;
 
-    float elapsedTime;
+	float elapsedTime;
     float intervalTime;
 
     public ChaseState(Transform[] wp, NPCTankController npcTank)
@@ -44,7 +44,6 @@ public class ChaseState : FSMState
         Quaternion targetRotation = Quaternion.LookRotation(destPos - npcTankController.transform.position);
         npcTankController.transform.rotation = Quaternion.Slerp(npcTankController.transform.rotation, targetRotation, Time.deltaTime * curRotSpeed);
         npcTankController.turret.rotation = Quaternion.Slerp(npcTankController.turret.transform.rotation, npcTankController.transform.rotation, Time.deltaTime * curRotSpeed);
-        //npcTankController.navAgent.SetDestination(destPos);
     }
 
     public override void Reason()

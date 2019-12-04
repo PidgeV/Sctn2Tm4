@@ -8,47 +8,57 @@ public class AIManager : MonoBehaviour
 	public bool AdvancedAI = true;
 	public bool playerFound = false;
 
-	List<Vector3> guardPoints = new List<Vector3>();
+	Queue<Transform> guardPoints = new Queue<Transform>();
 
 	bool guard = false;
 
 	[SerializeField] private Transform guardPos;
 	[SerializeField] private Transform AmbushPos;
 
+	public enum EnemyJob { NONE, GUARD, ATTACKER }
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		Instance = this;
-
-		foreach (GameObject go in GameObject.FindGameObjectsWithTag("GuardPoint")) {
-			guardPoints.Add(go.transform.position);
-		}
 	}
 
 	public void StartAdvancedStates()
 	{
+		guardPoints.Clear();
+		foreach (GameObject go in GameObject.FindGameObjectsWithTag("GuardPoint"))
+		{
+			guardPoints.Enqueue(go.transform);
+		}
+
 		guard = true;
 		playerFound = true;
 	}
 
-	/// <summary>
-	/// Returns what job the asking AI should do
-	/// </summary>
-	/// <returns> [0 -> Guard] [1 -> Ambusher] </returns>
-	public Transform GetTarget()
+	public EnemyJob GetJob()
 	{
-		return null;
-		//bool job = true; ;
-		//if (guard)
-		//{
-		//	job = true;
-		//}
-		//else
-		//{
-		//	job = false;
-		//}
+		EnemyJob job = EnemyJob.NONE;
+		if (guard && guardPoints.Count > 0)
+		{
+			job = EnemyJob.GUARD;
+		}
+		else
+		{
+			job = EnemyJob.ATTACKER;
+		}
 
-		//guard = !guard;
-		//return job;
+		guard = !guard;
+		return job;
+	}
+
+	public bool GetTarget(ref Transform guardPos)
+	{
+		if (guardPoints.Count > 0)
+		{
+			guardPos = guardPoints.Dequeue();
+			return true;
+		}
+
+		return false;
 	}
 }

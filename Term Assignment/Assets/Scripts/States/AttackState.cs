@@ -17,8 +17,6 @@ public class AttackState : FSMState
         curSpeed = 0.0f;
         elapsedTime = 0.0f;
         intervalTime = 5.0f;
-
-        npcTankController = npcTank;
     }
 
     public override void EnterStateInit()

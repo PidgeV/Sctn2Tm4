@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 		foreach (Transform pos in enemySpawnPoints)
 		{
 			yield return new WaitForSecondsRealtime(0.5f);
-			//GameObject.Instantiate(targetDummy, pos.position, pos.rotation);
+			GameObject.Instantiate(targetDummy, pos.position, pos.rotation);
 			enemyCount++;
 		}
 

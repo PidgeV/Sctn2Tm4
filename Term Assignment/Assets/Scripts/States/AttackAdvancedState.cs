@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Complete;
 
+using static AIManager;
+
 public class AttackAdvancedState : FSMState
 {
+	EnemyJob myJob = EnemyJob.NONE;
+
 	Transform assignedTarget = null;
+	SlotManager playerSlot;
+
+	int availableSlotIndex;
+
+	float elapsedTime;
+	float intervalTime;
 
 	/// <summary>
 	/// The States Constructor
@@ -15,6 +25,13 @@ public class AttackAdvancedState : FSMState
 	public AttackAdvancedState(Transform[] wp, NPCTankController npcTank)
 	{
 		InitializeEnemy(npcTank, FSMStateID.Attacking, wp);
+		playerSlot = npcTank.GetPlayerSlot();
+		availableSlotIndex = -1;
+
+		curRotSpeed = 1.0f;
+		curSpeed = 0.0f;
+		elapsedTime = 0.0f;
+		intervalTime = 5.0f;
 	}
 
 	/// <summary>
@@ -22,6 +39,7 @@ public class AttackAdvancedState : FSMState
 	/// </summary>
 	public override void EnterStateInit()
 	{
+		elapsedTime = 0.0f;
 	}
 	
 	/// <summary>
@@ -29,14 +47,39 @@ public class AttackAdvancedState : FSMState
 	/// </summary>
 	public override void Reason()
 	{
-		Transform npc = npcTankController.gameObject.transform;
-		Transform player = npcTankController.GetPlayerTransform();
-
 		// Get a target
-		if (assignedTarget == null)
+		if (myJob == EnemyJob.NONE) {
+			myJob = AIManager.Instance.GetJob();
+		}
+
+		if (myJob == EnemyJob.GUARD)
 		{
-			assignedTarget = AIManager.Instance.GetTarget();
-			//npcTankController.navAgent.SetDestination(assignedTarget.position);
+			if (assignedTarget == null)
+			{
+				if (!AIManager.Instance.GetTarget(ref assignedTarget))
+				{
+					myJob = EnemyJob.ATTACKER;
+				}
+			}
+
+			npcTankController.navAgent.SetDestination(assignedTarget.position);
+		}
+
+		if (myJob == EnemyJob.ATTACKER)
+		{
+			elapsedTime += Time.deltaTime;
+			if (elapsedTime > intervalTime)
+			{
+				elapsedTime = 0.0f;
+				destPos = npcTankController.GetPlayerTransform().position;
+				playerSlot.ReleaseSlot(availableSlotIndex);
+				availableSlotIndex = playerSlot.ReserveSlotAroundObject(npcTankController.gameObject);
+				if (availableSlotIndex != -1)
+				{
+					destPos = playerSlot.GetSlotPosition(availableSlotIndex);
+					npcTankController.navAgent.SetDestination(playerSlot.GetSlotPosition(availableSlotIndex));
+				}
+			}
 		}
 	}
 	
@@ -45,5 +88,31 @@ public class AttackAdvancedState : FSMState
 	/// </summary>
 	public override void Act()
 	{
+		Transform npc = npcTankController.gameObject.transform;
+		Transform player = npcTankController.GetPlayerTransform();
+
+		Quaternion leftQuatMax = Quaternion.AngleAxis(-45, new Vector3(0, 1, 0));
+		Quaternion rightQuatMax = Quaternion.AngleAxis(45, new Vector3(0, 1, 0));
+
+		UsefullFunctions.DebugRay(npc.position, leftQuatMax * npc.forward * 5.0f, Color.red);
+		UsefullFunctions.DebugRay(npc.position, rightQuatMax * npc.forward * 5.0f, Color.red);
+
+		Transform turret = npcTankController.turret.transform;
+		Vector3 targetDirection = player.position - npc.position;
+		Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
+		float angleBetween = Vector3.Angle(targetDirection, npc.forward);
+		if (angleBetween < 45)
+		{
+			// Rotate the turret
+			npcTankController.turret.rotation = Quaternion.Slerp(npcTankController.turret.rotation,
+			   targetRotation, Time.deltaTime * curRotSpeed);
+		}
+		else
+		{
+			// Rotate the body
+			npc.rotation = Quaternion.Slerp(npc.rotation,
+				targetRotation, Time.deltaTime * curRotSpeed);
+		}
 	}
 }

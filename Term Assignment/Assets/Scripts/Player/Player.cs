@@ -71,10 +71,4 @@ public class Player : MonoBehaviour
 		camera.transform.position = Vector3.Lerp(camera.transform.position, tragetPos, 0.1f);
 		camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, cameraHelper.rotation, 0.1f);
 	}
-
-	private void OnGUI()
-	{
-		GUILayout.Space(0);
-		GUILayout.Box("Speed: " + (currentSpeed * 100).ToString("000:00") + "\n" + "RotationSpeed: " + (currentRotation * 100).ToString("000:00"));
-	}
 }
