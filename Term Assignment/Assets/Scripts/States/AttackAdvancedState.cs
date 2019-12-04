@@ -36,7 +36,7 @@ public class AttackAdvancedState : FSMState
 		if (assignedTarget == null)
 		{
 			assignedTarget = AIManager.Instance.GetTarget();
-			npcTankController.navAgent.SetDestination(assignedTarget.position);
+			//npcTankController.navAgent.SetDestination(assignedTarget.position);
 		}
 	}
 	

@@ -28,6 +28,9 @@ namespace Complete
 		[HideInInspector]
 		public bool receivedAttackCommand = false;
 
+		[SerializeField] private GameObject bullet;
+		[SerializeField] private Transform barrel;
+
 		private Transform playerTransform;
 		private GameObject[] pointList;
 		private SlotManager playerSlotManager;
@@ -104,6 +107,17 @@ namespace Complete
 		}
 		protected override void FSMFixedUpdate()
 		{
+		}
+
+		public void Shoot()
+		{
+			GameObject shot = GameObject.Instantiate(bullet);
+			shot.transform.position = barrel.position;
+
+			if (shot.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+			{
+				rigidbody.velocity = transform.forward * 100;
+			}
 		}
 
 		/// <summary>
