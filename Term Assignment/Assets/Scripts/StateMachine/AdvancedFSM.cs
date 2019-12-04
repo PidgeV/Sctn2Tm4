@@ -19,16 +19,22 @@ namespace Complete
         ReachPlayer,
         Enable,
         NoHealth,
-    }
+        LowHP,
+		AssignedGuard,
+		AssignedAmbusher,
+	}
 
     public enum FSMStateID
     {
         None = 0,
-        Patrolling,
+        Ambushing,
         Chasing,
         Attacking,
         Dead,
-    }
+        Desperation,
+		Guarding,
+		Patrolling,
+	}
 
     public class AdvancedFSM : FSM
     {

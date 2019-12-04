@@ -26,6 +26,14 @@ namespace Complete
         protected Transform[] waypoints;
         protected float curRotSpeed;
         protected float curSpeed;
+        protected NPCTankController npcTankController;
+
+        public void InitializeEnemy(NPCTankController controller, FSMStateID state, Transform[] wp)
+        {
+            npcTankController = controller;
+            stateID = state;
+            waypoints = wp;
+        }
 
         public void AddTransition(Transition transition, FSMStateID id)
         {
@@ -45,7 +53,7 @@ namespace Complete
             }
 
             map.Add(transition, id);
-            Debug.Log("Added : " + transition + " with ID : " + id);
+           // Debug.Log("Added : " + transition + " with ID : " + id);
         }
 
         /// <summary>
@@ -129,7 +137,9 @@ namespace Complete
         protected virtual bool IsInCurrentRange(Transform trans, Vector3 pos, int range)
         {
             bool inRange = false;
-            float dist = Vector3.Distance(trans.position, pos);
+			Vector3 a = new Vector3(trans.position.x, 0, trans.position.z);
+			Vector3 b = new Vector3(pos.x, 0, pos.z);
+            float dist = Vector3.Distance(a, b);
             if (dist <= range)
             {
                 inRange = true;
