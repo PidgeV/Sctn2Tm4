@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform barrel;
     [SerializeField] private GameObject bullet;
 
+    public Animator rightTread;
+    public Animator leftTread;
+
     public float speed = 15f;
     public float rotation = 55f;
 
@@ -28,8 +31,6 @@ public class Player : MonoBehaviour
         currentSpeed = speed;
         currentRotation = rotation;
         shootInterval = 0.0f;
-
-
     }
 
     // Update is called once per frame
@@ -76,5 +77,32 @@ public class Player : MonoBehaviour
 
         camera.transform.position = Vector3.Lerp(camera.transform.position, tragetPos, 0.1f);
         camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, cameraHelper.rotation, 0.1f);
+
+        SetAnimators(x, y);
+    }
+
+    /// <summary>
+    /// This will set the speed for the animations
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    void SetAnimators(float x, float y)
+    {
+        float rSpeed = 0;
+        float lSpeed = 0;
+
+        if(x > 0)
+        {
+            rightTread.SetFloat("Speed", rSpeed);
+            leftTread.SetFloat("Speed", lSpeed);
+        }
+        else if(x < 0)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 }
