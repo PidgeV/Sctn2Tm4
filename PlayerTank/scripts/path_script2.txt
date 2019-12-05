@@ -1,0 +1,4 @@
+copythread=$
+new=instance copythread
+select new
+paramWire.connect copythread.pos.controller.Path_Constraint.controller[#Percent] new.pos.controller.Path_Constraint.controller[#Percent] "Percent+0.02"
