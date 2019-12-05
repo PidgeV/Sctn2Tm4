@@ -4110,6 +4110,8 @@ MonoBehaviour:
   camera: {fileID: 0}
   barrel: {fileID: 2661758299389430165}
   bullet: {fileID: 2992828415910485614, guid: 0b58a5509045f7140ae09c6aa7b5fde9, type: 3}
+  rightTread: {fileID: 2661758300963537875}
+  leftTread: {fileID: 2661758300444584068}
   speed: 5
   rotation: 75
   shootCooldown: 1
@@ -6013,7 +6015,7 @@ Animator:
   m_GameObject: {fileID: 2661758300444584070}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 59a1343498f4aee4aa462ccbee63a2cf, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7af49e2e4afefda46a71ca0128343269, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7654,7 +7656,7 @@ Animator:
   m_GameObject: {fileID: 2661758300963537877}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 735a77779a615c9489b2d20fcdd33a4d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fcf67b93df011b84cb35a33709c8927c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
