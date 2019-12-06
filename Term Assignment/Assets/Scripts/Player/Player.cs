@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 		currentRotation = rotation;
 		shootInterval = 0.0f;
 
-		yield return new WaitForSecondsRealtime(1.5f);
+		yield return new WaitForSecondsRealtime(0.5f);
 		wait = false;
 	}
 
