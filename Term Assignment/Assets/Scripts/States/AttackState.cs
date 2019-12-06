@@ -21,6 +21,7 @@ public class AttackState : FSMState
 
     public override void EnterStateInit()
     {
+        npcTankController.navAgent.velocity = Vector3.zero;
         elapsedTime = 0.0f;
     }
 
@@ -65,14 +66,14 @@ public class AttackState : FSMState
             npcTankController.PerformTransition(Transition.LostPlayer);
         }
 
-        //// Not sure if right
-        //elapsedTime += Time.deltaTime;
-        //if (elapsedTime > intervalTime)
-        //{
-        //    elapsedTime = 0.0f;
-        //    enemyShoot.Firing = false;
-        //    npcTankController.PerformTransition(Transition.SawPlayer);
-        //}
+        // Not sure if right
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime > intervalTime)
+        {
+            elapsedTime = 0.0f;
+            npcTankController.Shoot();
+            npcTankController.PerformTransition(Transition.SawPlayer);
+        }
     }
 
     //Act

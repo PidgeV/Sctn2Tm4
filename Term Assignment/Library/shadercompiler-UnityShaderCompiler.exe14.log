@@ -1,6 +1,22 @@
 Base path: 'D:/Unity/Editor/Data', plugins path 'D:/Unity/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: compileSnippet
-  api=4 type=1 insize=20295701 outsize=6486 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL LIGHTPROBE_SH SOFTPARTICLES_ON _ALPHAPREMULTIPLY_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileComputeKernel
+  api=4 insize=15603 outsize=95785 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=15603 outsize=46042 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=25750 outsize=324 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=9347 outsize=9139 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=21554 outsize=15798 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=36515 outsize=31493 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=5065 outsize=3022 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=15717 outsize=7553 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=3654 outsize=1059 ok=1
 
 Quitting shader compiler process

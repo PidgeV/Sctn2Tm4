@@ -29,6 +29,7 @@ public class ChaseState : FSMState
 
     public override void EnterStateInit()
     {
+        npcTankController.navAgent.velocity = Vector3.zero;
         destPos = npcTankController.GetPlayerTransform().position;
         playerSlot.ClearSlots(npcTankController.gameObject);
         availableSlotIndex = playerSlot.ReserveSlotAroundObject(npcTankController.gameObject);

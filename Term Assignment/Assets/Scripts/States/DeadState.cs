@@ -11,6 +11,7 @@ public class DeadState : FSMState
 
     public override void EnterStateInit()
     {
+        npcTankController.navAgent.velocity = Vector3.zero;
     }
 
     //Reason

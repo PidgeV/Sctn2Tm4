@@ -13,7 +13,7 @@ namespace Complete
 	public class NPCTankController : AdvancedFSM
 	{
 		public static int CHASE_DIST = 50;
-		public static int SLOT_DIST = 1;
+		public static int SLOT_DIST = 2;
 		public static int WAYPOINT_DIST = 1;
 		public static int ATTACK_DIST = 35;
 
@@ -116,7 +116,7 @@ namespace Complete
 
 			if (shot.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
 			{
-				rigidbody.velocity = transform.forward * 100;
+				rigidbody.velocity = barrel.forward * 100;
 			}
 		}
 

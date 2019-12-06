@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	[SerializeField] private GameObject targetDummy;
+	[SerializeField] private GameObject enemy;
+	[SerializeField] private GameObject advancedEnemy;
 	[SerializeField] private List<Transform> enemySpawnPoints = new List<Transform>();
 
 	/// <summary> Singleton for the GameManager script </summary>
@@ -13,18 +14,20 @@ public class GameManager : MonoBehaviour
 	private int enemyCount;
 	private int currentStage;
 	private bool gameOver;
+	public bool hardMode = false;
 
 	// Properties
 	/// <summary> Returns if the game is finished </summary>
 	public bool GameOver { get { return gameOver; } }
 
 	// Start is called before the first frame update
-	void Start()
+	IEnumerator Start()
 	{
 		Instance = this;
 		gameOver = false;
 		currentStage = 1;
 		enemyCount = -1;
+		yield return new WaitForSecondsRealtime(6f);
 		StartCoroutine(InitializeStage());
 	}
 
@@ -37,13 +40,28 @@ public class GameManager : MonoBehaviour
 		// Wait a frame before starting
 		yield return null;
 
+		int counter = 0;
+
 		// TODO: Spawn different things for each stage
 		// Spawns some target dummies 
-		foreach (Transform pos in enemySpawnPoints)
+		foreach (GameObject go in GameObject.FindGameObjectsWithTag("Waypoints"))
 		{
-			yield return new WaitForSecondsRealtime(0.5f);
-			GameObject.Instantiate(targetDummy, pos.position, pos.rotation);
+			if (counter >= 8 && !hardMode)
+			{
+				break;
+			}
+
+			yield return new WaitForSecondsRealtime(3.5f);
+			if (hardMode)
+			{
+				GameObject.Instantiate(advancedEnemy, go.transform.position, go.transform.rotation);
+			}
+			else
+			{
+				GameObject.Instantiate(enemy, go.transform.position, go.transform.rotation);
+			}
 			enemyCount++;
+			counter++;
 		}
 
 		// Wait a frame before ending

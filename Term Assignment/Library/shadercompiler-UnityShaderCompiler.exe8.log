@@ -1,4 +1,60 @@
 Base path: 'D:/Unity/Editor/Data', plugins path 'D:/Unity/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
+Cmd: compileComputeKernel
+  api=4 insize=15603 outsize=33407 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=15603 outsize=66079 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=15603 outsize=47261 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=15603 outsize=37645 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=25750 outsize=15695 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=1326 outsize=620 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=9461 outsize=3350 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=3092 outsize=1991 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=1940 outsize=1220 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=13624 outsize=2094 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=8644 outsize=4857 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=2553 outsize=2594 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=2905 outsize=1860 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=642 outsize=741 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=4423 outsize=2453 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=3022 outsize=494 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=7918 outsize=695 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=857 outsize=578 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=1580 outsize=16101 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=20668 outsize=27766 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=36515 outsize=36014 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=9814 outsize=4045 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=7700 outsize=5715 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=3918 outsize=3422 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=17632 outsize=5369 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=5725 outsize=5009 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=3844 outsize=4285 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=19711 outsize=445 ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=934 outsize=282 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+  api=4 type=0 insize=12432 outsize=3206 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1

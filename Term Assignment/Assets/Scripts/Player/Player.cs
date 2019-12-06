@@ -5,104 +5,114 @@ using UnityEngine.Experimental.VFX;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Transform cameraHelper;
-    [SerializeField] private GameObject camera;
+	[SerializeField] private Transform cameraHelper;
+	[SerializeField] private GameObject camera;
 
-    [SerializeField] private Transform barrel;
-    [SerializeField] private GameObject bullet;
+	[SerializeField] private Transform barrel;
+	[SerializeField] private GameObject bullet;
 
-    public Animator rightTread;
-    public Animator leftTread;
+	public Animator rightTread;
+	public Animator leftTread;
 
-    public float speed = 15f;
-    public float rotation = 55f;
+	public float speed = 15f;
+	public float rotation = 55f;
 
-    private float currentSpeed;
-    private float currentRotation;
+	private float currentSpeed;
+	private float currentRotation;
 
-    public float shootCooldown = 1.0f;
-    public float shootInterval = 0.0f;
+	public float shootCooldown = 1.0f;
+	public float shootInterval = 0.0f;
 
-    public VisualEffect smokeEffect;
+	public VisualEffect smokeEffect;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentSpeed = speed;
-        currentRotation = rotation;
-        shootInterval = 0.0f;
-    }
+	bool wait = true;
 
-    // Update is called once per frame
-    void Update()
-    {
-        shootInterval += Time.deltaTime;
-        if (shootInterval > shootCooldown)
-        {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                smokeEffect.SendEvent("EmitSmoke");
-                GameObject shot = GameObject.Instantiate(bullet);
-                shot.transform.position = barrel.position;
+	// Start is called before the first frame update
+	IEnumerator Start()
+	{
+		currentSpeed = speed;
+		currentRotation = rotation;
+		shootInterval = 0.0f;
 
-                if (shot.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
-                {
-                    rigidbody.velocity = transform.forward * 100;
-                }
+		yield return new WaitForSecondsRealtime(1.5f);
+		wait = false;
+	}
 
-                shootInterval = 0.0f;
-            }
-        }
+	// Update is called once per frame
+	void Update()
+	{
+		if (wait)
+		{
+			return;
+		}
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            currentSpeed = Mathf.Lerp(currentSpeed, speed * 3.0f, 0.01f);
-            currentRotation = Mathf.Lerp(currentRotation, rotation * 0.2f, 0.01f);
-        }
-        else
-        {
-            currentSpeed = Mathf.Lerp(currentSpeed, speed, 0.01f);
-            currentRotation = Mathf.Lerp(currentRotation, rotation, 0.01f);
-        }
+		shootInterval += Time.deltaTime;
+		if (shootInterval > shootCooldown)
+		{
+			if (Input.GetKey(KeyCode.Space))
+			{
+				smokeEffect.SendEvent("EmitSmoke");
+				GameObject shot = GameObject.Instantiate(bullet);
+				shot.transform.position = barrel.position;
 
-        Vector3 tragetPos = transform.position + (transform.forward * -5.0f) + new Vector3(0, 5, 0);
+				if (shot.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+				{
+					rigidbody.velocity = transform.forward * 100;
+				}
 
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * currentRotation;
-        float y = Input.GetAxis("Vertical") * Time.deltaTime * currentSpeed;
+				shootInterval = 0.0f;
+			}
+		}
 
-        y = y < 0 ? y *= 0.4f : y;
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			currentSpeed = Mathf.Lerp(currentSpeed, speed * 3.0f, 0.01f);
+			currentRotation = Mathf.Lerp(currentRotation, rotation * 0.2f, 0.01f);
+		}
+		else
+		{
+			currentSpeed = Mathf.Lerp(currentSpeed, speed, 0.01f);
+			currentRotation = Mathf.Lerp(currentRotation, rotation, 0.01f);
+		}
 
-        transform.Translate(0, 0, y);
-        transform.Rotate(0, x, 0);
+		Vector3 tragetPos = transform.position + (transform.forward * -7.0f) + new Vector3(0, 7, 0);
 
-        camera.transform.position = Vector3.Lerp(camera.transform.position, tragetPos, 0.1f);
-        camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, cameraHelper.rotation, 0.1f);
+		float x = Input.GetAxis("Horizontal") * Time.deltaTime * currentRotation;
+		float y = Input.GetAxis("Vertical") * Time.deltaTime * currentSpeed;
 
-        SetAnimators(x, y);
-    }
+		y = y < 0 ? y *= 0.4f : y;
 
-    /// <summary>
-    /// This will set the speed for the animations
-    /// </summary>
-    /// <param name="x"></param>
-    /// <param name="y"></param>
-    void SetAnimators(float x, float y)
-    {
-        float rSpeed = 0;
-        float lSpeed = 0;
+		transform.Translate(0, 0, y);
+		transform.Rotate(0, x, 0);
 
-        if(x > 0)
-        {
-            rightTread.SetFloat("Speed", rSpeed);
-            leftTread.SetFloat("Speed", lSpeed);
-        }
-        else if(x < 0)
-        {
+		camera.transform.position = Vector3.Lerp(camera.transform.position, tragetPos, 0.1f);
+		camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, cameraHelper.rotation, 0.1f);
 
-        }
-        else
-        {
+		SetAnimators(x, y);
+	}
 
-        }
-    }
+	/// <summary>
+	/// This will set the speed for the animations
+	/// </summary>
+	/// <param name="x"></param>
+	/// <param name="y"></param>
+	void SetAnimators(float x, float y)
+	{
+		float rSpeed = 0;
+		float lSpeed = 0;
+
+		if (x > 0)
+		{
+			rightTread.SetFloat("Speed", rSpeed);
+			leftTread.SetFloat("Speed", lSpeed);
+		}
+		else if (x < 0)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
 }

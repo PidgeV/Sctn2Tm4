@@ -2529,7 +2529,7 @@ GameObject:
   - component: {fileID: 5409842672796449178}
   - component: {fileID: 8407609852643188022}
   - component: {fileID: 3774502346115229329}
-  - component: {fileID: 6161978884674603650}
+  - component: {fileID: 3848018445631050084}
   m_Layer: 0
   m_Name: AdvancedEnemy
   m_TagString: Untagged
@@ -2609,7 +2609,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6161978884674603650
+--- !u!114 &3848018445631050084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2618,9 +2618,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2955007682532598760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 486b24dee4d81aa44b06f029da2a4312, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ccb03781d516af46927cd0acb90bb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 1
+  currentLife: 0
 --- !u!1 &2961003075178399694
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,6 @@ public class AIManager : MonoBehaviour
 
 	bool guard = false;
 
-	[SerializeField] private Transform guardPos;
-	[SerializeField] private Transform AmbushPos;
-
 	public enum EnemyJob { NONE, GUARD, ATTACKER }
 
 	// Start is called before the first frame update

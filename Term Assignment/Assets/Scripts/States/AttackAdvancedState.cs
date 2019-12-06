@@ -31,7 +31,7 @@ public class AttackAdvancedState : FSMState
 		curRotSpeed = 1.0f;
 		curSpeed = 0.0f;
 		elapsedTime = 0.0f;
-		intervalTime = 5.0f;
+		intervalTime = 3.5f;
 	}
 
 	/// <summary>
@@ -39,6 +39,7 @@ public class AttackAdvancedState : FSMState
 	/// </summary>
 	public override void EnterStateInit()
 	{
+        npcTankController.navAgent.velocity = Vector3.zero;
 		elapsedTime = 0.0f;
 	}
 	
@@ -81,7 +82,16 @@ public class AttackAdvancedState : FSMState
 				}
 			}
 		}
-	}
+
+        // Not sure if right
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime > intervalTime)
+        {
+            elapsedTime = 0.0f;
+            npcTankController.Shoot();
+            //npcTankController.PerformTransition(Transition.SawPlayer);
+        }
+    }
 	
 	/// <summary>
 	/// [Act] This works as Update for this state
@@ -90,6 +100,10 @@ public class AttackAdvancedState : FSMState
 	{
 		Transform npc = npcTankController.gameObject.transform;
 		Transform player = npcTankController.GetPlayerTransform();
+
+		if (player == null || npc == null) {
+			return;
+		}
 
 		Quaternion leftQuatMax = Quaternion.AngleAxis(-45, new Vector3(0, 1, 0));
 		Quaternion rightQuatMax = Quaternion.AngleAxis(45, new Vector3(0, 1, 0));

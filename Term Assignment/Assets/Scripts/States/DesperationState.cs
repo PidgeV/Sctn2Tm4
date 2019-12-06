@@ -11,8 +11,9 @@ public class DesperationState : FSMState
     }
 
     public override void EnterStateInit()
-	{
-		Transform player = npcTankController.GetPlayerTransform();
+    {
+        npcTankController.navAgent.velocity = Vector3.zero;
+        Transform player = npcTankController.GetPlayerTransform();
 		npcTankController.navAgent.SetDestination(player.position);
 	}
 
