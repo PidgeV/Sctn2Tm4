@@ -34,6 +34,7 @@ namespace Complete
         Desperation,
 		Guarding,
 		Patrolling,
+        Warning
 	}
 
     public class AdvancedFSM : FSM
