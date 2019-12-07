@@ -12,20 +12,40 @@ public class Health : MonoBehaviour
         currentLife = life;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        currentLife -= 1;
-        if (currentLife <= 0)
+        Damage dam = collision.gameObject.GetComponent<Damage>();
+
+        if (dam != null)
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+            currentLife -= dam.damage;
+            if (currentLife <= 0)
             {
-                rigidbody.velocity = other.GetComponent<Rigidbody>().velocity * 0.1f;
+                Destroy(gameObject);
+            }
+            else
+            {
+                if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+                {
+                    rigidbody.velocity = collision.gameObject.GetComponent<Rigidbody>().velocity * 0.1f;
+                }
             }
         }
-
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    currentLife -= 1;
+    //    if (currentLife <= 0)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //    else
+    //    {
+    //        if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+    //        {
+    //            rigidbody.velocity = other.GetComponent<Rigidbody>().velocity * 0.1f;
+    //        }
+    //    }
+    //}
 }

@@ -163,7 +163,7 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 50
+      - m_Value: 40
         m_Name: SpawnRateOverDistance
         m_Overridden: 1
     m_Matrix4x4f:
@@ -3644,7 +3644,7 @@ Transform:
   m_GameObject: {fileID: 2661758299832392849}
   m_LocalRotation: {x: -0.000000015089164, y: -0.00000031546884, z: 0.00000007360227,
     w: 1}
-  m_LocalPosition: {x: -0.321, y: 1.351, z: 0.295}
+  m_LocalPosition: {x: -0, y: 1.35, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2661758299381524250}
@@ -4055,6 +4055,7 @@ GameObject:
   - component: {fileID: 2661758299931924080}
   - component: {fileID: 2661758299931924081}
   - component: {fileID: 2661758299931924082}
+  - component: {fileID: 927259799}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4069,8 +4070,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2661758299931924083}
-  m_LocalRotation: {x: -0.000000015089164, y: -0.00000031546884, z: 0.00000007360227,
-    w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -0, z: -36.000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4078,6 +4078,7 @@ Transform:
   - {fileID: 2661758299389430165}
   - {fileID: 2661758300443372415}
   - {fileID: 2661758299832392848}
+  - {fileID: 2788095492851749230}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4092,8 +4093,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0.5, z: -0.5}
+  m_Size: {x: 3, y: 2, z: 3}
+  m_Center: {x: 0, y: 1, z: -0.5}
 --- !u!114 &2661758299931924080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4110,6 +4111,11 @@ MonoBehaviour:
   camera: {fileID: 0}
   barrel: {fileID: 2661758299389430165}
   bullet: {fileID: 2992828415910485614, guid: 0b58a5509045f7140ae09c6aa7b5fde9, type: 3}
+  landMinePrefab: {fileID: 4407550131509925418, guid: f6be22dcec5e60a4f89c5ea83411c334,
+    type: 3}
+  landMineList: []
+  landMineSpawnPosition: {fileID: 2788095492851749230}
+  maxLandmineCount: 3
   rightTread: {fileID: 2661758300963537875}
   leftTread: {fileID: 2661758300444584068}
   speed: 5
@@ -4145,8 +4151,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db0d6668f1a36d4e9d2b8570a1eb54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNumOfSlots: 10
-  distance: 20
+  maxNumOfSlots: 20
+  distance: 25
+--- !u!114 &927259799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661758299931924083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccb03781d516af46927cd0acb90bb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 50
+  currentLife: 0
 --- !u!1 &2661758299938495402
 GameObject:
   m_ObjectHideFlags: 0
@@ -5918,7 +5938,7 @@ Transform:
   m_GameObject: {fileID: 2661758300443372400}
   m_LocalRotation: {x: -0.000000015089164, y: -0.00000031546884, z: 0.00000007360227,
     w: 1}
-  m_LocalPosition: {x: 0, y: 0.812, z: -0.635}
+  m_LocalPosition: {x: 0.32, y: 0.81, z: -0.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2661758300773478389}
@@ -8657,7 +8677,7 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 50
+      - m_Value: 40
         m_Name: SpawnRateOverDistance
         m_Overridden: 1
     m_Matrix4x4f:
@@ -8708,3 +8728,33 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &3971501957455635407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2788095492851749230}
+  m_Layer: 0
+  m_Name: LandmineSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2788095492851749230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3971501957455635407}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2661758299931924094}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

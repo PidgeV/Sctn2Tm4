@@ -10,6 +10,11 @@ public class Player : MonoBehaviour
 
 	[SerializeField] private Transform barrel;
 	[SerializeField] private GameObject bullet;
+    
+    public GameObject landMinePrefab;
+    public List<GameObject> landMineList = new List<GameObject>();
+    public Transform landMineSpawnPosition;
+    public int maxLandmineCount = 3;
 
 	public Animator rightTread;
 	public Animator leftTread;
@@ -75,7 +80,7 @@ public class Player : MonoBehaviour
 			currentRotation = Mathf.Lerp(currentRotation, rotation, 0.01f);
 		}
 
-		Vector3 tragetPos = transform.position + (transform.forward * -7.0f) + new Vector3(0, 7, 0);
+		Vector3 targetPos = transform.position + (transform.forward * -7.0f) + new Vector3(0, 7, 0);
 
 		float x = Input.GetAxis("Horizontal") * Time.deltaTime * currentRotation;
 		float y = Input.GetAxis("Vertical") * Time.deltaTime * currentSpeed;
@@ -85,10 +90,15 @@ public class Player : MonoBehaviour
 		transform.Translate(0, 0, y);
 		transform.Rotate(0, x, 0);
 
-		camera.transform.position = Vector3.Lerp(camera.transform.position, tragetPos, 0.1f);
+		camera.transform.position = Vector3.Lerp(camera.transform.position, targetPos, 0.1f);
 		camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, cameraHelper.rotation, 0.1f);
 
 		SetAnimators(x, y);
+
+        if(Input.GetMouseButtonDown(0) && landMineList.Count < maxLandmineCount)
+        {
+            PlaceLandmine();
+        }
 	}
 
 	/// <summary>
@@ -115,4 +125,12 @@ public class Player : MonoBehaviour
 
 		}
 	}
+
+    void PlaceLandmine()
+    {
+        GameObject landmine = Instantiate(landMinePrefab, landMineSpawnPosition);
+        landmine.transform.parent = null;
+
+        landMineList.Add(landmine);
+    }
 }
