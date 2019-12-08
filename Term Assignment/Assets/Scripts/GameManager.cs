@@ -4,31 +4,39 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	[SerializeField] private GameObject enemy;
+	[SerializeField] private FollowPointCameraController camera;
+	
 	[SerializeField] private GameObject advancedEnemy;
-	[SerializeField] private List<Transform> enemySpawnPoints = new List<Transform>();
+	[SerializeField] private GameObject towerEnemy;
+	[SerializeField] private GameObject enemy;
+
+	private GameObject[] enemySpawnPoints = new GameObject[0];
+	private GameObject[] towerSpawnPoints = new GameObject[0];
 
 	/// <summary> Singleton for the GameManager script </summary>
 	public static GameManager Instance;
 
-	private int enemyCount;
-	private int currentStage;
-	private bool gameOver;
-	public bool hardMode = false;
+	/// <summary> What stage of the game we are on </summary>
+	private int currentStage = 3;
+	private int enemyCount = 0;
+
+	/// <summary> Do we want the game in hardmode? </summary>
+	[SerializeField] private bool hardMode = false;
 
 	// Properties
 	/// <summary> Returns if the game is finished </summary>
-	public bool GameOver { get { return gameOver; } }
+	public bool GameOver { get { return enemyCount <= 0; } }
 
 	// Start is called before the first frame update
 	IEnumerator Start()
 	{
-		Instance = this;
-		gameOver = false;
-		currentStage = 1;
-		enemyCount = -1;
-		yield return new WaitForSecondsRealtime(6f);
-		StartCoroutine(InitializeStage());
+		yield return new WaitForSecondsRealtime(2f);
+
+		towerSpawnPoints = GameObject.FindGameObjectsWithTag("TowerSpawnPoint");
+		enemySpawnPoints = GameObject.FindGameObjectsWithTag("Waypoints");
+
+		// Start the Initialization for the beginning stage of the game
+		yield return InitializeStage();
 	}
 
 	/// <summary>
@@ -40,46 +48,63 @@ public class GameManager : MonoBehaviour
 		// Wait a frame before starting
 		yield return null;
 
-		int counter = 0;
+		camera.FollowPlayer = false;
 
-		// TODO: Spawn different things for each stage
-		// Spawns some target dummies 
-		foreach (GameObject go in GameObject.FindGameObjectsWithTag("Waypoints"))
+		// If we want to limit the enemy count when were..
+		// NOT in Hard Mode
+		int enemyLimit = 12;
+
+		int enemyCounter = 0;
+
+		//Spawn Enemies
+		foreach (GameObject go in enemySpawnPoints)
 		{
-			if (counter >= 8 && !hardMode)
+			if (!hardMode)
 			{
-				break;
-			}
+				// Default Mode
+				GameObject.Instantiate(enemy, go.transform.position, go.transform.rotation);
 
-			yield return new WaitForSecondsRealtime(3.5f);
-			if (hardMode)
-			{
-				GameObject.Instantiate(advancedEnemy, go.transform.position, go.transform.rotation);
+				// If were over our enemy cap we stone spawning
+				if ( enemyCounter > enemyLimit) break;
 			}
 			else
 			{
-				GameObject.Instantiate(enemy, go.transform.position, go.transform.rotation);
+				// Hard Mode
+				GameObject.Instantiate(advancedEnemy, go.transform.position, go.transform.rotation);
 			}
-			enemyCount++;
-			counter++;
+			enemyCounter++;
+		}
+
+		// Spawn Towers
+		if (currentStage >= 2)
+		{
+			foreach (GameObject go in towerSpawnPoints)
+			{
+				// Instantiate a tower
+				GameObject.Instantiate(towerEnemy, go.transform.position, go.transform.rotation);
+			}
+		}
+
+		// Spawn the BOSS
+		if (currentStage >= 3)
+		{
 		}
 
 		// Wait a frame before ending
-		yield return null;
-	}
+		yield return new WaitForSecondsRealtime(3f);
 
-	// TODO: Add this to the enemy scripts
+		camera.FollowPlayer = true;
+	}
+	
 	/// <summary>
-	/// Called by each enemy in OnDisable
+	/// Called by each enemy in Death
 	/// </summary>
 	public void OnEnemyDeath()
 	{
 		if (enemyCount <= 0)
 		{
-			StopCoroutine(InitializeStage());
-			StartCoroutine(InitializeStage());
-			gameOver = true;
-			currentStage++;
+			// The Game is over
+			Debug.Log("Game is over!");
 		}
 		else
 		{

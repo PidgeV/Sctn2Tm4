@@ -9,10 +9,12 @@ public class WarningState : FSMState
     float elapsedTime;
     float intervalTime;
 
-    public WarningState(Transform[] wp, TurretController turret)
+	private TurretController turretController;
+
+	public WarningState(Transform[] wp, TurretController turret)
     {
         turretController = turret;
-        stateID = FSMStateID.Attacking;
+        stateID = FSMStateID.Warning;
         waypoints = wp;
 
         curRotSpeed = 1.0f;

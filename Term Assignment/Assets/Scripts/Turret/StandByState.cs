@@ -12,13 +12,13 @@ public class StandByState : FSMState
         turretController = turret;
         waypoints = wp;
 
-        destPos = waypoints[Random.Range(0, waypoints.Length)].position;
+        //destPos = waypoints[Random.Range(0, waypoints.Length)].position;
        // TurretController.navAgent.SetDestination(destPos);
     }
 
     public override void EnterStateInit()
     {
-        destPos = waypoints[Random.Range(0, waypoints.Length)].position;
+        //destPos = waypoints[Random.Range(0, waypoints.Length)].position;
      //   TurretController.navAgent.SetDestination(destPos);
     }
 
@@ -27,20 +27,18 @@ public class StandByState : FSMState
     {
         Transform npcTurret = turretController.gameObject.transform;
         Transform player = turretController.GetPlayerTransform();
-        
-       // if (enemyHealth && enemyHealth.isDead)
-      //  {
-      //      turretController.PerformTransition(Transition.NoHealth);
-       //     return;
-      //  }
 
-        if (IsInCurrentRange(turretController.transform, player.position, TurretController.WARNING_DIST))
+		// if (enemyHealth && enemyHealth.isDead)
+		//  {
+		//      turretController.PerformTransition(Transition.NoHealth);
+		//     return;
+		//  }
+
+		if (IsInCurrentRange(turretController.transform, player.position, TurretController.WARNING_DIST))
         {
             turretController.PerformTransition(Transition.SawPlayer);
 
         }
-
-
     }
     //Act
     public override void Act()

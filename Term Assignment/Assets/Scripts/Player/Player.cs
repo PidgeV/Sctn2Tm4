@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
 	public float shootCooldown = 1.0f;
 	public float shootInterval = 0.0f;
 
+	public bool moveCamera = false;
+
 	public VisualEffect smokeEffect;
 
 	bool wait = true;
@@ -89,10 +91,7 @@ public class Player : MonoBehaviour
 
 		transform.Translate(0, 0, y);
 		transform.Rotate(0, x, 0);
-
-		camera.transform.position = Vector3.Lerp(camera.transform.position, targetPos, 0.1f);
-		camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation, cameraHelper.rotation, 0.1f);
-
+		
 		SetAnimators(x, y);
 
         if(Input.GetMouseButtonDown(0) && landMineList.Count < maxLandmineCount)

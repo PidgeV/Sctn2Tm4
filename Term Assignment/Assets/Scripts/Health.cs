@@ -14,24 +14,31 @@ public class Health : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Damage dam = collision.gameObject.GetComponent<Damage>();
+		// Dear Black ... Did you know TryGetComponent<>() is the same as GetComponent<>() But without the garbage collection :p
+		if (collision.gameObject.TryGetComponent<Damage>(out Damage hit))
+		{
+			// Take damage
+			currentLife -= hit.damage;
 
-        if (dam != null)
-        {
-            currentLife -= dam.damage;
-            if (currentLife <= 0)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
-                {
-                    rigidbody.velocity = collision.gameObject.GetComponent<Rigidbody>().velocity * 0.1f;
-                }
-            }
-        }
-    }
+			// IF were dead
+			if (currentLife <= 0)
+			{
+				Destroy(gameObject);
+			}
+			else
+			{
+				// Else add knockback
+				if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody bullet) &&
+					          gameObject.TryGetComponent<Rigidbody>(out Rigidbody thisObject)) 
+				{
+					thisObject.velocity = bullet.velocity * 0.1f;
+				}
+			}
+
+			// Destroy the bullet that his this gameobject
+			Destroy(collision.gameObject);
+		}
+	}
 
     //private void OnTriggerEnter(Collider other)
     //{

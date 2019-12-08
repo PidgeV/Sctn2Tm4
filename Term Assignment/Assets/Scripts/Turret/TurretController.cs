@@ -115,13 +115,11 @@ namespace Complete
         /// </summary>
         private void ConstructFSM()
         {
-
             // Attack State
             AttackTurretState attackState = new AttackTurretState(null, this);
             attackState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
             attackState.AddTransition(Transition.SawPlayer, FSMStateID.Warning);
             attackState.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
-            //chaseState.AddTransition(Transition.LowHP, FSMStateID.Desperation);
             AddFSMState(attackState);
 
             // Warning State
@@ -129,7 +127,6 @@ namespace Complete
             warningState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
             warningState.AddTransition(Transition.ReachPlayer, FSMStateID.Attacking);
             warningState.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
-            //chaseState.AddTransition(Transition.LowHP, FSMStateID.Desperation);
             AddFSMState(warningState);
 
             // Make Patrolling State
@@ -137,8 +134,7 @@ namespace Complete
             standByState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
             standByState.AddTransition(Transition.ReachPlayer, FSMStateID.Attacking);
             standByState.AddTransition(Transition.SawPlayer, FSMStateID.Warning);
-            //chaseState.AddTransition(Transition.LowHP, FSMStateID.Desperation);
-            AddFSMState(warningState);
+            AddFSMState(standByState);
         }
 
         private void OnEnable()

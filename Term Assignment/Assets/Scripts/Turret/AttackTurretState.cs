@@ -9,7 +9,9 @@ public class AttackTurretState : FSMState
     float elapsedTime;
     float intervalTime;
 
-    public AttackTurretState(Transform[] wp, TurretController turret)
+	private TurretController turretController;
+
+	public AttackTurretState(Transform[] wp, TurretController turret)
     {
         turretController = turret;
         stateID = FSMStateID.Attacking;

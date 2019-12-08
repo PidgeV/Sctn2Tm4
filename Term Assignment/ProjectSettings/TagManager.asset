@@ -7,6 +7,8 @@ TagManager:
   - Waypoints
   - Obstacle
   - GuardPoint
+  - TowerSpawnPoint
+  - IdleCamera
   layers:
   - Default
   - TransparentFX
