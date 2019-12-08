@@ -32,6 +32,8 @@ public class Health : MonoBehaviour
 					          gameObject.TryGetComponent<Rigidbody>(out Rigidbody thisObject)) 
 				{
 					thisObject.velocity = bullet.velocity * 0.1f;
+					thisObject.angularVelocity = Vector3.zero;
+					
 				}
 			}
 

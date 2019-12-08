@@ -67,6 +67,11 @@ public class Player : MonoBehaviour
 					rigidbody.velocity = transform.forward * 100;
 				}
 
+				if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody player))
+				{
+					player.velocity = -transform.forward * 10f;
+				}
+
 				shootInterval = 0.0f;
 			}
 		}

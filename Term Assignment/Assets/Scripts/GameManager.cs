@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 		// Wait a frame before starting
 		yield return null;
 
-		camera.FollowPlayer = false;
+		//camera.FollowPlayer = false;
 
 		// If we want to limit the enemy count when were..
 		// NOT in Hard Mode
