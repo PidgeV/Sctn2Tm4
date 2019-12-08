@@ -10,11 +10,11 @@ public class Player : MonoBehaviour
 
 	[SerializeField] private Transform barrel;
 	[SerializeField] private GameObject bullet;
-    
-    public GameObject landMinePrefab;
-    public List<GameObject> landMineList = new List<GameObject>();
-    public Transform landMineSpawnPosition;
-    public int maxLandmineCount = 3;
+
+	public GameObject landMinePrefab;
+	public List<GameObject> landMineList = new List<GameObject>();
+	public Transform landMineSpawnPosition;
+	public int maxLandmineCount = 3;
 
 	public Animator rightTread;
 	public Animator leftTread;
@@ -91,13 +91,13 @@ public class Player : MonoBehaviour
 
 		transform.Translate(0, 0, y);
 		transform.Rotate(0, x, 0);
-		
+
 		SetAnimators(x, y);
 
-        if(Input.GetMouseButtonDown(0) && landMineList.Count < maxLandmineCount)
-        {
-            PlaceLandmine();
-        }
+		if (Input.GetMouseButtonDown(0) && landMineList.Count < maxLandmineCount)
+		{
+			PlaceLandmine();
+		}
 	}
 
 	/// <summary>
@@ -107,29 +107,55 @@ public class Player : MonoBehaviour
 	/// <param name="y"></param>
 	void SetAnimators(float x, float y)
 	{
-		float rSpeed = 0;
-		float lSpeed = 0;
-
-		if (x > 0)
+		if (x == 0 && y == 0)
 		{
-			rightTread.SetFloat("Speed", rSpeed);
-			leftTread.SetFloat("Speed", lSpeed);
-		}
-		else if (x < 0)
-		{
-
+			rightTread.SetFloat("Speed", 0);
+			leftTread.SetFloat("Speed", 0);
 		}
 		else
 		{
-
+			if (y > 0)
+			{
+				rightTread.SetFloat("Speed", 1);
+				leftTread.SetFloat("Speed", 1);
+			}
+			else if (x <= 0 && y == 0)
+			{
+				rightTread.SetFloat("Speed", 1);
+				leftTread.SetFloat("Speed", -1);
+			}
+			else if (x > 0 && y == 0)
+			{
+				rightTread.SetFloat("Speed", -1);
+				leftTread.SetFloat("Speed", 1);
+			}
+			else
+			{
+				rightTread.SetFloat("Speed", -1);
+				leftTread.SetFloat("Speed", -1);
+			}
 		}
+
+		//if (x > 0)
+		//{
+		//	rightTread.SetFloat("Speed", rSpeed);
+		//	leftTread.SetFloat("Speed", lSpeed);
+		//}
+		//else if (x < 0)
+		//{
+
+		//}
+		//else
+		//{
+
+		//}
 	}
 
-    void PlaceLandmine()
-    {
-        GameObject landmine = Instantiate(landMinePrefab, landMineSpawnPosition);
-        landmine.transform.parent = null;
+	void PlaceLandmine()
+	{
+		GameObject landmine = Instantiate(landMinePrefab, landMineSpawnPosition);
+		landmine.transform.parent = null;
 
-        landMineList.Add(landmine);
-    }
+		landMineList.Add(landmine);
+	}
 }

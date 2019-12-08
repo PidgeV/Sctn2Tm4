@@ -62,7 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MiniMap.cs" />
     <Compile Include="Assets\Scripts\AddedManagers\GridManager.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Damage.cs" />
@@ -72,6 +71,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Landmine.cs" />
+    <Compile Include="Assets\Scripts\MiniMap.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\SlotManager.cs" />
@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Turret\TurretController.cs" />
     <Compile Include="Assets\Scripts\Turret\WarningState.cs" />
     <Compile Include="Assets\Scripts\UsefullFunctions.cs" />
+    <Compile Include="Assets\TankTread.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/GitHub/Sctn2Tm4/Term Assignment/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
