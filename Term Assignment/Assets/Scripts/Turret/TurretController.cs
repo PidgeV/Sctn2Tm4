@@ -20,6 +20,8 @@ namespace Complete
       //  public SlotManager coverPositionsSlotManager;
       //  public NavMeshAgent navAgent;
         public Transform turret;
+        public Light light;
+
 
         [SerializeField] private GameObject bullet;
        // [SerializeField] private Transform barrel;
@@ -79,6 +81,7 @@ namespace Complete
         {
             debugDraw = true;
 
+
             // Find the Player and init appropriate data.
             GameObject objPlayer = GameObject.FindGameObjectWithTag("Player");
             playerTransform = objPlayer.transform;
@@ -115,12 +118,13 @@ namespace Complete
         /// </summary>
         private void ConstructFSM()
         {
-            // Attack State
-            AttackTurretState attackState = new AttackTurretState(null, this);
-            attackState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
-            attackState.AddTransition(Transition.SawPlayer, FSMStateID.Warning);
-            attackState.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
-            AddFSMState(attackState);
+            //Patrolling State
+            StandByState standByState = new StandByState(null, this);
+            standByState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
+            standByState.AddTransition(Transition.ReachPlayer, FSMStateID.Attacking);
+            standByState.AddTransition(Transition.SawPlayer, FSMStateID.Warning);
+            AddFSMState(standByState);
+
 
             // Warning State
             WarningState warningState = new WarningState(null, this);
@@ -129,12 +133,15 @@ namespace Complete
             warningState.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
             AddFSMState(warningState);
 
-            // Make Patrolling State
-            StandByState standByState = new StandByState(null, this);
-            standByState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
-            standByState.AddTransition(Transition.ReachPlayer, FSMStateID.Attacking);
-            standByState.AddTransition(Transition.SawPlayer, FSMStateID.Warning);
-            AddFSMState(standByState);
+            // Attack State
+            AttackTurretState attackState = new AttackTurretState(null, this);
+            attackState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
+            attackState.AddTransition(Transition.SawPlayer, FSMStateID.Warning);
+            attackState.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
+            AddFSMState(attackState);
+
+
+
         }
 
         private void OnEnable()
@@ -154,11 +161,15 @@ namespace Complete
         public void Shoot()
         {
             GameObject shot = GameObject.Instantiate(bullet);
-            shot.transform.position = turret.position;
+
+            //adding ofset to compensate for the height of the turret base. Without this turret shoots in the sky.
+            //even with offset it doesn't aim player properly.
+            Vector3 offset = new Vector3(0, 2, 0);
+            shot.transform.position = turret.position + offset;
 
             if (shot.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
             {
-                rigidbody.velocity = turret.forward * 100;
+                  rigidbody.velocity = turret.forward * 100;
             }
         }
     }

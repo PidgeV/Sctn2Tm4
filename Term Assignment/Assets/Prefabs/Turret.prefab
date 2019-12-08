@@ -103,6 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8141746014163212292}
   - component: {fileID: 3347454142523949005}
+  - component: {fileID: 4492425673566825251}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -140,9 +141,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharNumber: 1
   turret: {fileID: 6414234784103972005}
-  bullet: {fileID: 3457287481680383278}
+  light: {fileID: 8338391957802303120}
+  bullet: {fileID: 2992828415910485614, guid: 0b58a5509045f7140ae09c6aa7b5fde9, type: 3}
   rigBody: {fileID: 0}
   receivedAttackCommand: 0
+--- !u!114 &4492425673566825251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692432959512988920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccb03781d516af46927cd0acb90bb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 1
+  currentLife: 0
 --- !u!1 &8338391957802303124
 GameObject:
   m_ObjectHideFlags: 0

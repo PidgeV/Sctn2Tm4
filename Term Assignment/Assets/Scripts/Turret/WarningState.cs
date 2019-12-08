@@ -20,6 +20,9 @@ public class WarningState : FSMState
         curRotSpeed = 1.0f;
         elapsedTime = 0.0f;
         intervalTime = 5.0f;
+       // turretController.light = turretController.GetComponent<Light>();
+
+
     }
 
     public override void EnterStateInit()
@@ -64,6 +67,7 @@ public class WarningState : FSMState
     //Act
     public override void Act()
     {
+
         Transform npc = turretController.gameObject.transform;
         Transform player = turretController.GetPlayerTransform();
 
@@ -71,13 +75,15 @@ public class WarningState : FSMState
         UsefullFunctions.DebugRay(npc.position, npc.forward, Color.red);
 
         Transform turret = turretController.turret.transform;
+
         Vector3 targetDirection = player.position - npc.position;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
         // Rotate the turret
-        turretController.turret.rotation = Quaternion.Slerp(turretController.turret.rotation,
+        turret.rotation = Quaternion.Slerp(turret.rotation,
         targetRotation, Time.deltaTime * curRotSpeed);
 
+        turretController.light.color = Color.yellow;
 
     }
 }

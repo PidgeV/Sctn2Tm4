@@ -28,6 +28,7 @@ namespace Complete
         protected float curSpeed;
         protected NPCTankController npcTankController;
 
+
         public void InitializeEnemy(NPCTankController controller, FSMStateID state, Transform[] wp)
         {
             npcTankController = controller;

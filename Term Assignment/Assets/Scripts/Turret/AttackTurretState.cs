@@ -19,7 +19,9 @@ public class AttackTurretState : FSMState
 
         curRotSpeed = 1.0f;
         elapsedTime = 0.0f;
-        intervalTime = 5.0f;
+        intervalTime = 1.0f;
+       // turretController.light = turretController.GetComponent<Light>();
+
     }
 
     public override void EnterStateInit()
@@ -88,6 +90,7 @@ public class AttackTurretState : FSMState
         turretController.turret.rotation = Quaternion.Slerp(turretController.turret.rotation,
         targetRotation, Time.deltaTime * curRotSpeed);
 
+        turretController.light.color = Color.red;
 
     }
 }

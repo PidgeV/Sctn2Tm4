@@ -11,9 +11,11 @@ public class StandByState : FSMState
     {
         turretController = turret;
         waypoints = wp;
+        stateID = FSMStateID.Patrolling;
+
 
         //destPos = waypoints[Random.Range(0, waypoints.Length)].position;
-       // TurretController.navAgent.SetDestination(destPos);
+        // TurretController.navAgent.SetDestination(destPos);
     }
 
     public override void EnterStateInit()
@@ -43,6 +45,7 @@ public class StandByState : FSMState
     //Act
     public override void Act()
     {
+        turretController.light.color = Color.green;
 
     }
 }
