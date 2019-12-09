@@ -165,11 +165,11 @@ namespace Complete
             //adding ofset to compensate for the height of the turret base. Without this turret shoots in the sky.
             //even with offset it doesn't aim player properly.
             Vector3 offset = new Vector3(0, 2, 0);
-            shot.transform.position = turret.position + offset;
+            shot.transform.position = turret.position;
 
             if (shot.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
             {
-                  rigidbody.velocity = turret.forward * 100;
+                  rigidbody.velocity = playerTransform.position - shot.transform.position;
             }
         }
     }
