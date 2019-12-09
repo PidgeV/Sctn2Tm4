@@ -57,7 +57,7 @@ LightmapSettings:
     serializedVersion: 12
     m_Resolution: 3
     m_BakeResolution: 10
-    m_AtlasSize: 2048
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -76,8 +76,8 @@ LightmapSettings:
     m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
-    m_PVRSampleCount: 500
-    m_PVRBounces: 3
+    m_PVRSampleCount: 128
+    m_PVRBounces: 2
     m_PVREnvironmentSampleCount: 128
     m_PVREnvironmentReferencePointCount: 2048
     m_PVRFilteringMode: 2
@@ -2954,6 +2954,7 @@ GameObject:
   - component: {fileID: 1149606658}
   - component: {fileID: 1149606660}
   - component: {fileID: 1149606659}
+  - component: {fileID: 1149606661}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -3019,6 +3020,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149606657}
   m_CullTransparentMesh: 0
+--- !u!114 &1149606661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149606657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 1
 --- !u!1001 &1178072778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4251,7 +4266,7 @@ PrefabInstance:
     - target: {fileID: 2176052403468044660, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
       propertyPath: m_Materials.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2176052403468044660, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
@@ -4261,7 +4276,7 @@ PrefabInstance:
     - target: {fileID: 2418892723793709144, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
       propertyPath: m_Materials.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2418892723793709144, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
@@ -4271,12 +4286,17 @@ PrefabInstance:
     - target: {fileID: 8050889451190161986, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
       propertyPath: m_Materials.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8050889451190161986, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050889451190161986, guid: deb63268fc5428846a8a2140d42dc28e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3872312469813416838, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
@@ -4303,6 +4323,29 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3815204222570650430, guid: deb63268fc5428846a8a2140d42dc28e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3815204222570650430, guid: deb63268fc5428846a8a2140d42dc28e,
+        type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 0cf52931e613c914d9c3bc68f2760dc2,
+        type: 3}
+    - target: {fileID: 1637712381236122978, guid: deb63268fc5428846a8a2140d42dc28e,
+        type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: b8818009ea33b654d9435e29aa3c8ada,
+        type: 3}
+    - target: {fileID: 5954348641589295718, guid: deb63268fc5428846a8a2140d42dc28e,
+        type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: b8818009ea33b654d9435e29aa3c8ada,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb63268fc5428846a8a2140d42dc28e, type: 3}
 --- !u!1 &3872312469003182607 stripped
