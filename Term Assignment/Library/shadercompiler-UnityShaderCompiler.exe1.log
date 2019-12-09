@@ -3,40 +3,82 @@ Cmd: initializeCompiler
 Cmd: compileComputeKernel
   api=4 insize=2549 outsize=869 ok=1
 Cmd: compileComputeKernel
+  api=4 insize=18610 outsize=4952 ok=1
+Cmd: compileComputeKernel
   api=4 insize=15603 outsize=13998 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=38538 ok=1
+  api=4 insize=15603 outsize=46203 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=36168 ok=1
+  api=4 insize=15603 outsize=55274 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=66079 ok=1
+  api=4 insize=15603 outsize=32144 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=15603 outsize=35940 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=15603 outsize=33112 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=15603 outsize=48540 ok=1
 Cmd: compileComputeKernel
   api=4 insize=15603 outsize=65875 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=44478 ok=1
+  api=4 insize=15603 outsize=34781 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=25750 outsize=15619 ok=1
+  api=4 insize=15603 outsize=33989 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=1326 outsize=620 ok=1
+  api=4 insize=15603 outsize=68268 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=9347 outsize=7844 ok=1
+  api=4 insize=25750 outsize=13735 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=21554 outsize=15086 ok=1
+  api=4 insize=25750 outsize=324 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=2648 outsize=1945 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=9347 outsize=12684 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=9461 outsize=3340 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=7423 outsize=1033 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=21554 outsize=14055 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=8644 outsize=4069 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=2905 outsize=1865 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=3022 outsize=494 ok=1
 Cmd: compileComputeKernel
   api=4 insize=7918 outsize=317 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=36515 outsize=31493 ok=1
+  api=4 insize=20668 outsize=95091 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=36515 outsize=36014 ok=1
 Cmd: compileComputeKernel
   api=4 insize=36515 outsize=32909 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=9814 outsize=4045 ok=1
+  api=4 insize=17606 outsize=8154 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=3918 outsize=2751 ok=1
+  api=4 insize=5065 outsize=1485 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=3654 outsize=1059 ok=1
+  api=4 insize=15717 outsize=3063 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=2510 outsize=562 ok=1
+  api=4 insize=8970 outsize=4890 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=19711 outsize=24850 ok=1
+  api=4 insize=3043 outsize=2756 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=1563 outsize=1146 ok=1
+  api=4 insize=9814 outsize=2460 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=7700 outsize=6747 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=3918 outsize=3422 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=17632 outsize=2481 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=5725 outsize=5009 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=19711 outsize=445 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=12432 outsize=3206 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=2295 outsize=446 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=7138 outsize=9962 kw=DECALS_3RT DEBUG_DISPLAY _NORMALMAP_TANGENT_SPACE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
