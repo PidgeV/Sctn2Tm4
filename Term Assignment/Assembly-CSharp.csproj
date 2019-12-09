@@ -84,6 +84,9 @@
      <Compile Include="Assets\Scripts\Turret\StandByState.cs" />
      <Compile Include="Assets\Scripts\Turret\TurretController.cs" />
      <Compile Include="Assets\Scripts\Turret\WarningState.cs" />
+     <Compile Include="Assets\Scripts\UI\button.cs" />
+     <Compile Include="Assets\Scripts\UI\hardMode.cs" />
+     <Compile Include="Assets\Scripts\UI\quit.cs" />
      <Compile Include="Assets\Scripts\UsefullFunctions.cs" />
      <Compile Include="Assets\TankTread.cs" />
  <Reference Include="Unity.Timeline.Editor">
