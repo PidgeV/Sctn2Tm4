@@ -4530,7 +4530,7 @@ MonoBehaviour:
   turret: {fileID: 554198997096824492}
   rigBody: {fileID: 0}
   receivedAttackCommand: 0
-  bullet: {fileID: 2992828415910485614, guid: 0b58a5509045f7140ae09c6aa7b5fde9, type: 3}
+  bullet: {fileID: 3957306040946835998, guid: b60592c464cddfd46be3a7319f86def1, type: 3}
   barrel: {fileID: 6424436258912013098}
   AdvancedAI: 0
 --- !u!195 &6786817147205393797
@@ -4569,6 +4569,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   currentLife: 0
+  explosion: {fileID: 5810282733569099277, guid: c2ff583a2d059f04ebd71b8b67f04d32,
+    type: 3}
 --- !u!1 &4853120380241427674
 GameObject:
   m_ObjectHideFlags: 0

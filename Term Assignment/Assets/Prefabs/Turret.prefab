@@ -143,7 +143,7 @@ MonoBehaviour:
   m_CharNumber: 1
   turret: {fileID: 6414234784103972005}
   light: {fileID: 8338391957802303120}
-  bullet: {fileID: 2992828415910485614, guid: 0b58a5509045f7140ae09c6aa7b5fde9, type: 3}
+  bullet: {fileID: 3957306040946835998, guid: b60592c464cddfd46be3a7319f86def1, type: 3}
   rigBody: {fileID: 0}
   receivedAttackCommand: 0
 --- !u!114 &4492425673566825251
@@ -160,6 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   currentLife: 0
+  explosion: {fileID: 5810282733569099277, guid: c2ff583a2d059f04ebd71b8b67f04d32,
+    type: 3}
 --- !u!136 &3189397685578732179
 CapsuleCollider:
   m_ObjectHideFlags: 0

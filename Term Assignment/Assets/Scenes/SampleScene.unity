@@ -2862,7 +2862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1124507350
 Transform:
   m_ObjectHideFlags: 0
@@ -2976,10 +2976,10 @@ RectTransform:
   m_Father: {fileID: 626722214}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -171.2, y: -173.7}
-  m_SizeDelta: {x: 320, y: 320}
+  m_AnchorMin: {x: 0.82800007, y: 0.69100004}
+  m_AnchorMax: {x: 0.99447924, y: 0.98700005}
+  m_AnchoredPosition: {x: -0.7000122, y: 0.2999878}
+  m_SizeDelta: {x: 1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1149606659
 MonoBehaviour:
@@ -3406,10 +3406,10 @@ RectTransform:
   m_Father: {fileID: 1149606658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.0062562553}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -160, y: -160}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: 0, y: -1}
+  m_SizeDelta: {x: -20, y: -18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1558902260
 MonoBehaviour:
@@ -3793,6 +3793,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8099051800321495714}
     m_Modifications:
+    - target: {fileID: 2835256883847604647, guid: cacb47d39e505134287a22057fb2da07,
+        type: 3}
+      propertyPath: m_Name
+      value: Scene 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835256883847604647, guid: cacb47d39e505134287a22057fb2da07,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4678738383748966188, guid: cacb47d39e505134287a22057fb2da07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3862,16 +3872,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835256883847604647, guid: cacb47d39e505134287a22057fb2da07,
-        type: 3}
-      propertyPath: m_Name
-      value: Scene 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835256883847604647, guid: cacb47d39e505134287a22057fb2da07,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3924040700284031034, guid: cacb47d39e505134287a22057fb2da07,
         type: 3}
@@ -4250,13 +4250,28 @@ PrefabInstance:
       objectReference: {fileID: 963194225}
     - target: {fileID: 2176052403468044660, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176052403468044660, guid: deb63268fc5428846a8a2140d42dc28e,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2418892723793709144, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418892723793709144, guid: deb63268fc5428846a8a2140d42dc28e,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050889451190161986, guid: deb63268fc5428846a8a2140d42dc28e,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8050889451190161986, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
