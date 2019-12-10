@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
 	/// <summary> Returns if the game is finished </summary>
 	public bool GameOver { get { return enemyCount <= 0; } }
 
+
+    //set hard mode (from the menu)  --- svitlana
+    public void SetHardMode(bool mode)
+    {
+        hardMode = mode;
+    }
+
 	// Start is called before the first frame update
 	IEnumerator Start()
 	{

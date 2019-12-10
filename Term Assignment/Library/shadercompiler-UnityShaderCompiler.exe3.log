@@ -1,42 +1,51 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 Cmd: compileComputeKernel
-  api=4 insize=18610 outsize=1491 ok=1
+  api=4 insize=18610 outsize=8048 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=114003 ok=1
+  api=4 insize=15603 outsize=55274 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=37645 ok=1
+  api=4 insize=15603 outsize=48540 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=9347 outsize=9146 ok=1
+  api=4 insize=15603 outsize=40455 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=9461 outsize=467 ok=1
+  api=4 insize=15603 outsize=33857 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=4025 outsize=4208 ok=1
+  api=4 insize=15603 outsize=50857 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=7423 outsize=1128 ok=1
+  api=4 insize=25750 outsize=16121 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=13624 outsize=3543 ok=1
+  api=4 insize=9461 outsize=3350 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=21554 outsize=15241 ok=1
+  api=4 insize=13624 outsize=4058 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=21554 outsize=15324 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=7247 outsize=8217 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=5906 outsize=9178 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=21751 outsize=21785 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=8644 outsize=813 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=7918 outsize=695 ok=1
 Cmd: compileComputeKernel
   api=4 insize=857 outsize=578 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=20668 outsize=95086 ok=1
+  api=4 insize=36515 outsize=36696 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=36515 outsize=37474 ok=1
+  api=4 insize=3654 outsize=1426 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=17606 outsize=8154 ok=1
+  api=4 insize=17632 outsize=5164 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=5065 outsize=2822 ok=1
+  api=4 insize=5725 outsize=629 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=8970 outsize=244 ok=1
+  api=4 insize=3844 outsize=4285 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=7700 outsize=7862 ok=1
+  error: 1 plat 4 at TankSmoke.vfx(62): comma expression used where a vector constructor may have been intended
+  api=4 insize=6300 outsize=8566 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=3918 outsize=885 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=17632 outsize=638 ok=1
-Cmd: compileSnippet
-  error: 1 plat 4 at Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/Shadow/HDShadowAlgorithms.hlsl(182): floating point division by zero\nCompiling Fragment program with SHADOW_LOW USE_CLUSTERED_LIGHTLIST
-Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
-  api=4 type=1 insize=19497 outsize=61862 kw=SHADOW_LOW USE_CLUSTERED_LIGHTLIST pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+  api=4 insize=1563 outsize=1146 ok=1
+
+Quitting shader compiler process
