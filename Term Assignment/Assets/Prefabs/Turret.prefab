@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 8141746014163212292}
   - component: {fileID: 3347454142523949005}
   - component: {fileID: 4492425673566825251}
-  - component: {fileID: 3189397685578732179}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -120,8 +119,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6692432959512988920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.030821, y: 0.52076, z: 0.27845}
-  m_LocalScale: {x: 0.89372, y: 0.89372, z: 0.89372}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6414234784103972005}
   - {fileID: 4415736169164444082}
@@ -143,7 +142,7 @@ MonoBehaviour:
   m_CharNumber: 1
   turret: {fileID: 6414234784103972005}
   light: {fileID: 8338391957802303120}
-  bullet: {fileID: 3957306040946835998, guid: b60592c464cddfd46be3a7319f86def1, type: 3}
+  bullet: {fileID: 2992828415910485614, guid: 0b58a5509045f7140ae09c6aa7b5fde9, type: 3}
   rigBody: {fileID: 0}
   receivedAttackCommand: 0
 --- !u!114 &4492425673566825251
@@ -160,22 +159,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   currentLife: 0
-  explosion: {fileID: 5810282733569099277, guid: c2ff583a2d059f04ebd71b8b67f04d32,
-    type: 3}
---- !u!136 &3189397685578732179
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6692432959512988920}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2.0668342
-  m_Height: 4.1336684
-  m_Direction: 1
-  m_Center: {x: 0.028232241, y: 1.5668349, z: 0.04542163}
 --- !u!1 &8338391957802303124
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +360,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8141746014163212292}
     m_Modifications:
+    - target: {fileID: 2084957836668031346, guid: 8b10f997061ed5b4cb0851809251c8ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Turret_Test
+      objectReference: {fileID: 0}
     - target: {fileID: 3077114973857850209, guid: 8b10f997061ed5b4cb0851809251c8ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -446,11 +434,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2084957836668031346, guid: 8b10f997061ed5b4cb0851809251c8ea,
-        type: 3}
-      propertyPath: m_Name
-      value: Turret_Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b10f997061ed5b4cb0851809251c8ea, type: 3}

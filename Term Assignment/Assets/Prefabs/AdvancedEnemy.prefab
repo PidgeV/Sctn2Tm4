@@ -820,7 +820,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974560881984042199}
   m_Enabled: 1
-  m_Asset: {fileID: 0}
+  m_Asset: {fileID: 8926484042661614526, guid: 9504a80ad6fbfcf448994dd7ad498201, type: 3}
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
@@ -2584,7 +2584,7 @@ MonoBehaviour:
   turret: {fileID: 7925999800698521016}
   rigBody: {fileID: 0}
   receivedAttackCommand: 0
-  bullet: {fileID: 3957306040946835998, guid: b60592c464cddfd46be3a7319f86def1, type: 3}
+  bullet: {fileID: 2992828415910485614, guid: 0b58a5509045f7140ae09c6aa7b5fde9, type: 3}
   barrel: {fileID: 3703658065442222142}
   AdvancedAI: 1
 --- !u!195 &3774502346115229329
@@ -2623,8 +2623,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   currentLife: 0
-  explosion: {fileID: 5810282733569099277, guid: c2ff583a2d059f04ebd71b8b67f04d32,
-    type: 3}
 --- !u!1 &2961003075178399694
 GameObject:
   m_ObjectHideFlags: 0
@@ -4495,7 +4493,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5189709313920373423}
   m_Enabled: 1
-  m_Asset: {fileID: 0}
+  m_Asset: {fileID: 8926484042661614526, guid: 9504a80ad6fbfcf448994dd7ad498201, type: 3}
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
