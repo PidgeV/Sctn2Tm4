@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
 
 	private GameObject[] enemySpawnPoints = new GameObject[0];
 	private GameObject[] towerSpawnPoints = new GameObject[0];
+    private Button[] buttons = new Button[0];
 
 	/// <summary> Singleton for the GameManager script </summary>
 	public static GameManager Instance;
@@ -41,9 +43,11 @@ public class GameManager : MonoBehaviour
 
 		towerSpawnPoints = GameObject.FindGameObjectsWithTag("TowerSpawnPoint");
 		enemySpawnPoints = GameObject.FindGameObjectsWithTag("Waypoints");
+        buttons = FindObjectsOfType<Button>();
+
 
 		// Start the Initialization for the beginning stage of the game
-		yield return InitializeStage();
+	    //	yield return InitializeStage();    -------- Initializing from the Start Button/Hard Mode function now (Svitlana)
 	}
 
 	/// <summary>
@@ -81,6 +85,7 @@ public class GameManager : MonoBehaviour
 			}
 			enemyCounter++;
 		}
+        
 
 		// Spawn Towers
 		if (currentStage >= 2)
@@ -118,4 +123,39 @@ public class GameManager : MonoBehaviour
 			enemyCount--;
 		}
 	}
+
+    public void OnClickStartButton()
+    {
+        hardMode = false;
+        foreach(Button b in buttons)
+        {
+            b.gameObject.SetActive(false);
+        }
+        StartCoroutine(InitializeStage());
+
+    }
+
+    /// <summary>
+    /// Menu buttons functions
+    /// </summary>
+    public void OnClickHardModeButton()
+    {
+        hardMode = true;
+        foreach (Button b in buttons)
+        {
+            b.gameObject.SetActive(false);
+           
+        }
+        StartCoroutine(InitializeStage());
+
+    }
+
+    public void OnClickExitButton()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+
+        Application.Quit();
+    }
+
+
 }
