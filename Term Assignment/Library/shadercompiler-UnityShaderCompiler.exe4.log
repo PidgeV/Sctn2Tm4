@@ -1,24 +1,6 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: compileComputeKernel
-  api=4 insize=18610 outsize=4952 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=93200 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=68560 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=3687 outsize=3172 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=1326 outsize=666 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=2648 outsize=1945 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=11251 outsize=5613 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=36515 outsize=37474 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=7700 outsize=4600 ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=2295 outsize=858 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-
-Quitting shader compiler process
+  error: 1 plat 4 at Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/Shadow/HDShadowAlgorithms.hlsl(182): floating point division by zero\nCompiling Fragment program with SHADOW_LOW USE_CLUSTERED_LIGHTLIST
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  api=4 type=1 insize=19312 outsize=61862 kw=SHADOW_LOW USE_CLUSTERED_LIGHTLIST pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
