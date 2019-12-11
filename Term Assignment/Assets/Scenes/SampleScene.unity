@@ -6153,36 +6153,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3872312469003182615, guid: deb63268fc5428846a8a2140d42dc28e,
-        type: 3}
-      propertyPath: MaxDistance
-      value: 28.654152
-      objectReference: {fileID: 0}
-    - target: {fileID: 3872312469003182615, guid: deb63268fc5428846a8a2140d42dc28e,
-        type: 3}
-      propertyPath: rolloffMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3872312469003182615, guid: deb63268fc5428846a8a2140d42dc28e,
-        type: 3}
-      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
-      value: 0.033333335
-      objectReference: {fileID: 0}
-    - target: {fileID: 3872312469003182615, guid: deb63268fc5428846a8a2140d42dc28e,
-        type: 3}
-      propertyPath: Priority
-      value: 118
-      objectReference: {fileID: 0}
-    - target: {fileID: 3872312469003182615, guid: deb63268fc5428846a8a2140d42dc28e,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3872312469003182615, guid: deb63268fc5428846a8a2140d42dc28e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb63268fc5428846a8a2140d42dc28e, type: 3}
 --- !u!1 &3872312469003182607 stripped
