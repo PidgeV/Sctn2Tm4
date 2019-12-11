@@ -1,44 +1,6 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=46203 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=42917 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=35804 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=42701 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=31472 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=57607 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=46042 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=25750 outsize=15377 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=1326 outsize=666 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=4918 outsize=2350 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=7423 outsize=6491 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=3092 outsize=1991 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=21554 outsize=15324 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=36515 outsize=32909 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=5065 outsize=1174 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=824 outsize=320 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=9814 outsize=3652 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=7700 outsize=5466 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=17632 outsize=2481 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=19711 outsize=2569 ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=7138 outsize=12482 kw=DECALS_3RT DEBUG_DISPLAY _NORMALMAP_TANGENT_SPACE _NORMALMAP _MASKMAP _EMISSIVE_COLOR_MAP pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
 
 Quitting shader compiler process

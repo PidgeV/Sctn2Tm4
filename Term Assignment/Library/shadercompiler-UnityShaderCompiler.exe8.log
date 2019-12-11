@@ -1,42 +1,8 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=22333 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=32183 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=32144 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=35940 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=44181 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=65759 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=15603 outsize=68560 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=25750 outsize=16121 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=3797 outsize=1744 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=5767 outsize=5733 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=975 outsize=888 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=4025 outsize=645 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=4918 outsize=2055 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=5906 outsize=9178 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=8644 outsize=4857 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=4423 outsize=2453 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=36515 outsize=33663 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=2596 outsize=2186 ok=1
-Cmd: compileComputeKernel
-  api=4 insize=7700 outsize=5715 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=7138 outsize=1818 kw=DECALS_3RT DEBUG_DISPLAY pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=7138 outsize=1818 kw=DECALS_3RT DEBUG_DISPLAY _PIXEL_DISPLACEMENT _DISPLACEMENT_LOCK_TILING_SCALE _PIXEL_DISPLACEMENT_LOCK_OBJECT_SCALE _NORMALMAP_TANGENT_SPACE _NORMALMAP _MASKMAP _EMISSIVE_COLOR_MAP _HEIGHTMAP pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
 
 Quitting shader compiler process
