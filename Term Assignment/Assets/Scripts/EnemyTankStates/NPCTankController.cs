@@ -143,8 +143,9 @@ namespace Complete
         }
 
         public void Shoot()
-        {
-            GameObject shot = GameObject.Instantiate(bullet);
+		{
+			MusicController.Instance.Shoot();
+			GameObject shot = GameObject.Instantiate(bullet);
             shot.transform.position = barrel.position;
 
             if (shot.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))

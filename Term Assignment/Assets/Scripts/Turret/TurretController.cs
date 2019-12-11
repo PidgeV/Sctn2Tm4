@@ -163,8 +163,9 @@ namespace Complete
 		}
 
         public void Shoot()
-        {
-            GameObject shot = GameObject.Instantiate(bullet);
+		{
+			MusicController.Instance.Shoot();
+			GameObject shot = GameObject.Instantiate(bullet);
 
             //adding ofset to compensate for the height of the turret base. Without this turret shoots in the sky.
             //even with offset it doesn't aim player properly.

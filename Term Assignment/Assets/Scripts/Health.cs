@@ -18,11 +18,13 @@ public class Health : MonoBehaviour
     {
         // Dear Black ... Did you know TryGetComponent<>() is the same as GetComponent<>() But without the garbage collection :p
         if (collision.gameObject.TryGetComponent<Damage>(out Damage hit))
-        {
-            Instantiate(explosion, transform.position + new Vector3(0, 1, 0), transform.rotation);
+		{
+			MusicController.Instance.Hit();
+			Instantiate(explosion, transform.position + new Vector3(0, 1, 0), transform.rotation);
 
             // Take damage
             currentLife -= hit.damage;
+			Debug.Log(currentLife);
 
             // IF were dead
             if (currentLife <= 0)
@@ -39,6 +41,10 @@ public class Health : MonoBehaviour
                         Respawn();
                     }
                 }
+				else
+				{
+					Destroy(gameObject);
+				}
             }
             else
             {

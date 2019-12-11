@@ -1,4 +1,4 @@
-Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data/PlaybackEngines'
+Base path: 'D:/Unity/Editor/Data', plugins path 'D:/Unity/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 Cmd: preprocessCompute
   insize=6004 outsize=6006 ok=1
@@ -12,5 +12,3 @@ Cmd: preprocess
   insize=83559 outsize=4287 ok=1
 Cmd: preprocess
   insize=90832 outsize=4455 ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=8218 outsize=104870 kw=SHADOWS_SHADOWMASK DECALS_3RT SHADOW_LOW USE_CLUSTERED_LIGHTLIST _SURFACE_TYPE_TRANSPARENT DEBUG_DISPLAY _ALPHATEST_ON _DOUBLESIDED_ON _NORMALMAP_TANGENT_SPACE _BLENDMODE_ALPHA _BLENDMODE_PRESERVE_SPECULAR_LIGHTING pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1

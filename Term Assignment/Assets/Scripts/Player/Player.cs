@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.Space))
 			{
+				MusicController.Instance.Shoot();
+
 				smokeEffect.SendEvent("EmitSmoke");
 				GameObject shot = GameObject.Instantiate(bullet);
 				shot.transform.position = barrel.position;
