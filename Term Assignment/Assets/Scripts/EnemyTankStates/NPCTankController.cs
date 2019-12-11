@@ -38,6 +38,13 @@ namespace Complete
 
 		public bool AdvancedAI = true;
 
+		override public IEnumerator Start()
+		{
+			while (!GameManager.Instance.playing) { yield return null; }
+
+			Initialize();
+		}
+
 		public Transform GetPlayerTransform()
 		{
 			return playerTransform;
@@ -178,6 +185,10 @@ namespace Complete
 		}
 		private void OnDisable()
 		{
+			if (GameManager.Instance)
+			{
+				GameManager.Instance.OnEnemyDeath();
+			}
 			if (navAgent && navAgent.isActiveAndEnabled)
 				navAgent.isStopped = true;
 		}

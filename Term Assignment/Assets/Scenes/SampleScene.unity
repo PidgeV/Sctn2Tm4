@@ -494,7 +494,10 @@ MonoBehaviour:
   towerEnemy: {fileID: 6692432959512988920, guid: f06c213dd29726d4192e15c8284c5ca1,
     type: 3}
   enemy: {fileID: 4849369692185385212, guid: e0c7fbba4a71c9f4782a638374abaec6, type: 3}
+  bossEnemy: {fileID: 5057325662828973439, guid: c0f0420a5d5435b4a8395a813d21ab6e,
+    type: 3}
   hardMode: 0
+  playing: 0
 --- !u!1 &203382324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1778,7 +1781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &626722211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3700,7 +3703,7 @@ RectTransform:
   m_AnchorMin: {x: 0.82800007, y: 0.69100004}
   m_AnchorMax: {x: 0.99447924, y: 0.98700005}
   m_AnchoredPosition: {x: -0.7000122, y: 0.2999878}
-  m_SizeDelta: {x: 1, y: 0}
+  m_SizeDelta: {x: 1, y: 0.90538216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1149606659
 MonoBehaviour:
@@ -5562,6 +5565,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8099051800321495714}
     m_Modifications:
+    - target: {fileID: 2835256883847604647, guid: cacb47d39e505134287a22057fb2da07,
+        type: 3}
+      propertyPath: m_Name
+      value: Scene 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835256883847604647, guid: cacb47d39e505134287a22057fb2da07,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4678738383748966188, guid: cacb47d39e505134287a22057fb2da07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5631,16 +5644,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835256883847604647, guid: cacb47d39e505134287a22057fb2da07,
-        type: 3}
-      propertyPath: m_Name
-      value: Scene 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835256883847604647, guid: cacb47d39e505134287a22057fb2da07,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3924040700284031034, guid: cacb47d39e505134287a22057fb2da07,
         type: 3}
@@ -5970,7 +5973,7 @@ PrefabInstance:
     - target: {fileID: 3872312469813416839, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -63.8
+      value: -65
       objectReference: {fileID: 0}
     - target: {fileID: 3872312469813416839, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}
@@ -6076,6 +6079,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872312469813416840, guid: deb63268fc5428846a8a2140d42dc28e,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3815204222570650430, guid: deb63268fc5428846a8a2140d42dc28e,
         type: 3}

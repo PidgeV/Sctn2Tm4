@@ -10,7 +10,7 @@ public class AIManager : MonoBehaviour
 
 	Queue<Transform> guardPoints = new Queue<Transform>();
 
-	bool guard = false;
+	bool guard = true;
 
 	public enum EnemyJob { NONE, GUARD, ATTACKER }
 

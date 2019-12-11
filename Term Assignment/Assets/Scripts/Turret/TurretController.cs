@@ -152,11 +152,15 @@ namespace Complete
                 PerformTransition(Transition.Enable);
         }
         private void OnDisable()
-        {
-          /*  if (navAgent && navAgent.isActiveAndEnabled)
-                navAgent.isStopped = true;
-                */
-        }
+		{
+			if (GameManager.Instance)
+			{
+				GameManager.Instance.OnEnemyDeath();
+			}
+			/*  if (navAgent && navAgent.isActiveAndEnabled)
+				  navAgent.isStopped = true;
+				  */
+		}
 
         public void Shoot()
         {
