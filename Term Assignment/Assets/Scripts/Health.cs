@@ -27,7 +27,18 @@ public class Health : MonoBehaviour
             // IF were dead
             if (currentLife <= 0)
             {
-                Destroy(gameObject);
+                if (gameObject.TryGetComponent<Lives>(out Lives life))
+                {
+                    life.lives -= 1;
+                    if (life.lives == 0)
+                    {
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        Respawn();
+                    }
+                }
             }
             else
             {
@@ -37,13 +48,19 @@ public class Health : MonoBehaviour
                 {
                     thisObject.velocity = bullet.velocity * 0.1f;
                     thisObject.angularVelocity = Vector3.zero;
-
                 }
             }
 
             // Destroy the bullet that his this gameobject
             Destroy(collision.gameObject);
         }
+    }
+
+    void Respawn()
+    {
+        transform.position = new Vector3(0, 0, -65);
+        transform.rotation = Quaternion.identity;
+        currentLife = life;
     }
 
     //private void OnTriggerEnter(Collider other)

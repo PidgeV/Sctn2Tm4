@@ -4496,6 +4496,7 @@ Transform:
   m_Children:
   - {fileID: 554198997096824492}
   - {fileID: 614084977608950142}
+  - {fileID: 7777035397202365199}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4528,6 +4529,10 @@ MonoBehaviour:
   coverPositionsSlotManager: {fileID: 0}
   navAgent: {fileID: 6786817147205393797}
   turret: {fileID: 554198997096824492}
+  landminePrefab: {fileID: 4407550131509925418, guid: f6be22dcec5e60a4f89c5ea83411c334,
+    type: 3}
+  landmineSpawnPosition: {fileID: 7777035397202365199}
+  landmineSpawnTime: 5
   rigBody: {fileID: 0}
   receivedAttackCommand: 0
   bullet: {fileID: 3957306040946835998, guid: b60592c464cddfd46be3a7319f86def1, type: 3}
@@ -6841,6 +6846,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &7260437699200033381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7777035397202365199}
+  m_Layer: 0
+  m_Name: LandmineSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7777035397202365199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260437699200033381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.598, y: 0, z: -2.626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4045996236670609661}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7271385743773086871
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,11 +18,12 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance;
 
 	/// <summary> What stage of the game we are on </summary>
-	private int currentStage = 3;
+	public int currentStage = 1;
 	private int enemyCount = 0;
+    public int enemyLimit = 5;
 
-	/// <summary> Do we want the game in hardmode? </summary>
-	[SerializeField] private bool hardMode = false;
+    /// <summary> Do we want the game in hardmode? </summary>
+    [SerializeField] private bool hardMode = false;
 
 	public bool playing = false;
 
@@ -69,8 +70,6 @@ public class GameManager : MonoBehaviour
 
 		// If we want to limit the enemy count when were..
 		// NOT in Hard Mode
-		int enemyLimit = 1;
-
 		int enemyCounter = 0;
 
 		//Spawn Enemies

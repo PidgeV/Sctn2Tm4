@@ -4,193 +4,225 @@
 //
 namespace Complete
 {
-	using UnityEngine;
-	using UnityEngine.AI;
-	using UnityEngine.UI;
-	using System.Collections;
-	using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.AI;
+    using UnityEngine.UI;
+    using System.Collections;
+    using System.Collections.Generic;
 
-	public class NPCTankController : AdvancedFSM
-	{
-		public static int CHASE_DIST = 50;
-		public static int SLOT_DIST = 2;
-		public static int WAYPOINT_DIST = 1;
-		public static int ATTACK_DIST = 35;
+    public class NPCTankController : AdvancedFSM
+    {
+        public static int CHASE_DIST = 50;
+        public static int SLOT_DIST = 2;
+        public static int WAYPOINT_DIST = 1;
+        public static int ATTACK_DIST = 35;
 
-		public int m_CharNumber = 1;                        // Used to identify which tank belongs to which character.  This is set by this tank's manager.
-		public SlotManager coverPositionsSlotManager;
-		public NavMeshAgent navAgent;
-		public Transform turret;
+        public int m_CharNumber = 1;                        // Used to identify which tank belongs to which character.  This is set by this tank's manager.
+        public SlotManager coverPositionsSlotManager;
+        public NavMeshAgent navAgent;
+        public Transform turret;
 
-		[HideInInspector]
-		public Rigidbody rigBody;
+        [SerializeField] GameObject landminePrefab;
+        [SerializeField] Transform landmineSpawnPosition;
+        [SerializeField] float landmineSpawnTime = 5f;
+        [SerializeField] SpawnRatio spawnRatio = new SpawnRatio();
+        private float landmineTimer = 0;
 
-		[HideInInspector]
-		public bool receivedAttackCommand = false;
 
-		[SerializeField] private GameObject bullet;
-		[SerializeField] private Transform barrel;
+        [HideInInspector]
+        public Rigidbody rigBody;
 
-		private Transform playerTransform;
-		private GameObject[] pointList;
-		private SlotManager playerSlotManager;
-		private bool debugDraw;
+        [HideInInspector]
+        public bool receivedAttackCommand = false;
 
-		public bool AdvancedAI = true;
+        [SerializeField] private GameObject bullet;
+        [SerializeField] private Transform barrel;
 
-		override public IEnumerator Start()
-		{
-			while (!GameManager.Instance.playing) { yield return null; }
+        private Transform playerTransform;
+        private GameObject[] pointList;
+        private SlotManager playerSlotManager;
+        private bool debugDraw;
 
-			Initialize();
-		}
+        public bool AdvancedAI = true;
 
-		public Transform GetPlayerTransform()
-		{
-			return playerTransform;
-		}
-		public SlotManager GetPlayerSlot()
-		{
-			return playerSlotManager;
-		}
+        override public IEnumerator Start()
+        {
+            while (!GameManager.Instance.playing) { yield return null; }
 
-		private string GetStateString()
-		{
-			string state = "NONE";
-			if (CurrentState != null)
-			{
-				if (CurrentState.ID == FSMStateID.Dead)
-				{
-					state = "DEAD";
-				}
-				else if (CurrentState.ID == FSMStateID.Ambushing)
-				{
-					state = "PATROL";
-				}
-				else if (CurrentState.ID == FSMStateID.Chasing)
-				{
-					state = "CHASE";
-				}
-				else if (CurrentState.ID == FSMStateID.Attacking)
-				{
-					state = "ATTACK";
-				}
-			}
+            Initialize();
+        }
 
-			return state;
-		}
+        public Transform GetPlayerTransform()
+        {
+            return playerTransform;
+        }
+        public SlotManager GetPlayerSlot()
+        {
+            return playerSlotManager;
+        }
 
-		// Initialize the FSM for the NPC tank.
-		protected override void Initialize()
-		{
-			debugDraw = true;
+        private string GetStateString()
+        {
+            string state = "NONE";
+            if (CurrentState != null)
+            {
+                if (CurrentState.ID == FSMStateID.Dead)
+                {
+                    state = "DEAD";
+                }
+                else if (CurrentState.ID == FSMStateID.Ambushing)
+                {
+                    state = "PATROL";
+                }
+                else if (CurrentState.ID == FSMStateID.Chasing)
+                {
+                    state = "CHASE";
+                }
+                else if (CurrentState.ID == FSMStateID.Attacking)
+                {
+                    state = "ATTACK";
+                }
+            }
 
-			// Find the Player and init appropriate data.
-			GameObject objPlayer = GameObject.FindGameObjectWithTag("Player");
-			playerTransform = objPlayer.transform;
-			playerSlotManager = objPlayer.GetComponent<SlotManager>();
+            return state;
+        }
 
-			rigBody = GetComponent<Rigidbody>();
+        // Initialize the FSM for the NPC tank.
+        protected override void Initialize()
+        {
+            debugDraw = true;
 
-			receivedAttackCommand = false;
+            // Find the Player and init appropriate data.
+            GameObject objPlayer = GameObject.FindGameObjectWithTag("Player");
+            playerTransform = objPlayer.transform;
+            playerSlotManager = objPlayer.GetComponent<SlotManager>();
 
-			// Create the FSM for the tank.
-			ConstructFSM();
+            rigBody = GetComponent<Rigidbody>();
 
-		}
+            receivedAttackCommand = false;
 
-		// Update each frame.
-		protected override void FSMUpdate()
-		{
-			if (CurrentState != null)
-			{
-				CurrentState.Reason();
-				CurrentState.Act();
-			}
-			if (debugDraw)
-			{
-				UsefullFunctions.DebugRay(transform.position, transform.forward * 5.0f, Color.red);
-			}
-		}
-		protected override void FSMFixedUpdate()
-		{
-		}
+            // Create the FSM for the tank.
+            ConstructFSM();
 
-		public void Shoot()
-		{
-			GameObject shot = GameObject.Instantiate(bullet);
-			shot.transform.position = barrel.position;
+        }
 
-			if (shot.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
-			{
-				rigidbody.velocity = barrel.forward * 100;
-			}
-		}
+        // Update each frame.
+        protected override void FSMUpdate()
+        {
+            if (CurrentState != null)
+            {
+                CurrentState.Reason();
+                CurrentState.Act();
+            }
+            if (debugDraw)
+            {
+                UsefullFunctions.DebugRay(transform.position, transform.forward * 5.0f, Color.red);
+            }
 
-		/// <summary>
-		/// Where we add our states
-		/// </summary>
-		private void ConstructFSM()
-		{
-			// ________________
-			// Make Chase State
-			ChaseState chaseState = new ChaseState(null, this);
-			chaseState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
-			chaseState.AddTransition(Transition.ReachPlayer, FSMStateID.Attacking);
-			chaseState.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
-			chaseState.AddTransition(Transition.LowHP, FSMStateID.Desperation);
-			AddFSMState(chaseState);
+            SpawnLandmine();
+        }
 
-			// ______________________
-			// Make Desperation State
-			DesperationState desperationState = new DesperationState(null, this);
-			desperationState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
-			AddFSMState(desperationState);
+        void SpawnLandmine()
+        {
+            landmineTimer += Time.deltaTime;
 
-			// _________________
-			// Make Attack State 
-			if (AdvancedAI)
-			{
-				AttackAdvancedState attackAdvancedState = new AttackAdvancedState(null, this);
-				attackAdvancedState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
-				AddFSMState(attackAdvancedState);
-			}
-			else
-			{
-				AttackState attackState = new AttackState(null, this);
-				attackState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
-				attackState.AddTransition(Transition.LowHP, FSMStateID.Desperation);
-				attackState.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
-				attackState.AddTransition(Transition.SawPlayer, FSMStateID.Chasing);
-				AddFSMState(attackState);
-			}
+            if (landmineTimer >= landmineSpawnTime)
+            {
+                landmineTimer = 0;
 
-			// _____________________
-			// Make Patrolling State
-			PatrollingState patrollingState = new PatrollingState(null, this);
-			patrollingState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
-			patrollingState.AddTransition(Transition.SawPlayer, FSMStateID.Chasing);
-			patrollingState.AddTransition(Transition.ReachPlayer, FSMStateID.Attacking);
-			patrollingState.AddTransition(Transition.LowHP, FSMStateID.Desperation);
-			AddFSMState(patrollingState);
+                if ((int)Random.Range(spawnRatio.min, spawnRatio.outOf + 1) == spawnRatio.outOf)
+                {
+                    GameObject mine = Instantiate(landminePrefab, landmineSpawnPosition);
+                    mine.transform.parent = null;
+                }
+            }
+        }
 
-		}
+        protected override void FSMFixedUpdate()
+        {
+        }
 
-		private void OnEnable()
-		{
-			if (navAgent)
-				navAgent.isStopped = false;
-			if (CurrentState != null)
-				PerformTransition(Transition.Enable);
-		}
-		private void OnDisable()
-		{
-			if (GameManager.Instance)
-			{
-				GameManager.Instance.OnEnemyDeath();
-			}
-			if (navAgent && navAgent.isActiveAndEnabled)
-				navAgent.isStopped = true;
-		}
-	}
+        public void Shoot()
+        {
+            GameObject shot = GameObject.Instantiate(bullet);
+            shot.transform.position = barrel.position;
+
+            if (shot.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+            {
+                rigidbody.velocity = barrel.forward * 100;
+            }
+        }
+
+        /// <summary>
+        /// Where we add our states
+        /// </summary>
+        private void ConstructFSM()
+        {
+            // ________________
+            // Make Chase State
+            ChaseState chaseState = new ChaseState(null, this);
+            chaseState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
+            chaseState.AddTransition(Transition.ReachPlayer, FSMStateID.Attacking);
+            chaseState.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
+            chaseState.AddTransition(Transition.LowHP, FSMStateID.Desperation);
+            AddFSMState(chaseState);
+
+            // ______________________
+            // Make Desperation State
+            DesperationState desperationState = new DesperationState(null, this);
+            desperationState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
+            AddFSMState(desperationState);
+
+            // _________________
+            // Make Attack State 
+            if (AdvancedAI)
+            {
+                AttackAdvancedState attackAdvancedState = new AttackAdvancedState(null, this);
+                attackAdvancedState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
+                AddFSMState(attackAdvancedState);
+            }
+            else
+            {
+                AttackState attackState = new AttackState(null, this);
+                attackState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
+                attackState.AddTransition(Transition.LowHP, FSMStateID.Desperation);
+                attackState.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
+                attackState.AddTransition(Transition.SawPlayer, FSMStateID.Chasing);
+                AddFSMState(attackState);
+            }
+
+            // _____________________
+            // Make Patrolling State
+            PatrollingState patrollingState = new PatrollingState(null, this);
+            patrollingState.AddTransition(Transition.NoHealth, FSMStateID.Dead);
+            patrollingState.AddTransition(Transition.SawPlayer, FSMStateID.Chasing);
+            patrollingState.AddTransition(Transition.ReachPlayer, FSMStateID.Attacking);
+            patrollingState.AddTransition(Transition.LowHP, FSMStateID.Desperation);
+            AddFSMState(patrollingState);
+
+        }
+
+        private void OnEnable()
+        {
+            if (navAgent)
+                navAgent.isStopped = false;
+            if (CurrentState != null)
+                PerformTransition(Transition.Enable);
+        }
+        private void OnDisable()
+        {
+            if (GameManager.Instance)
+            {
+                GameManager.Instance.OnEnemyDeath();
+            }
+            if (navAgent && navAgent.isActiveAndEnabled)
+                navAgent.isStopped = true;
+        }
+
+        public class SpawnRatio
+        {
+            public float min = 1;
+            public float outOf = 6;
+        }
+    }
 }
