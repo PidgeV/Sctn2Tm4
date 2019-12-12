@@ -6,7 +6,7 @@ public class UIManager : MonoBehaviour
 {
     const float moveUp = 3.75f;     // How high each block is above the previous
     const float riseSpeed = 10.0f;  // The speed at which each block ascends when a hit is taken
-    const float moveRight = 2.5f;
+    const float moveRight = 7.5f;
 
     [SerializeField] private Transform      healthBase;     // The space in the UI where the health bar begins
     [SerializeField] private RectTransform  lifeBase;       // The point in UI space where the first block will be laid

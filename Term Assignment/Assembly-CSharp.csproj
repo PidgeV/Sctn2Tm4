@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\FollowPointCameraController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Landmine.cs" />
     <Compile Include="Assets\Scripts\Lives.cs" />
     <Compile Include="Assets\Scripts\MiniMap.cs" />
@@ -100,7 +101,6 @@
     <Compile Include="Assets\Scripts\UI\SpinInPlace.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UsefullFunctions.cs" />
-    <Compile Include="Assets\TankTread.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Blake/Documents/GitHub/Sctn2Tm4/Term Assignment/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
