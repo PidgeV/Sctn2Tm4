@@ -14,16 +14,18 @@ public class GameManager : MonoBehaviour
 	private GameObject[] enemySpawnPoints = new GameObject[0];
 	private GameObject[] towerSpawnPoints = new GameObject[0];
 
+	private List<GameObject> dudes = new List<GameObject>();
+
 	/// <summary> Singleton for the GameManager script </summary>
 	public static GameManager Instance;
 
 	/// <summary> What stage of the game we are on </summary>
 	public int currentStage = 1;
 	private int enemyCount = 0;
-    public int enemyLimit = 5;
+	public int enemyLimit = 5;
 
-    /// <summary> Do we want the game in hardmode? </summary>
-    [SerializeField] private bool hardMode = false;
+	/// <summary> Do we want the game in hardmode? </summary>
+	[SerializeField] private bool hardMode = false;
 
 	public bool playing = false;
 
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour
 	/// <summary> Returns if the game is finished </summary>
 	public bool GameOver { get { return enemyCount <= 0; } }
 
+	private void Start()
+	{
+		Instance = this;
+	}
 
 	//set hard mode (from the menu)  --- svitlana
 	public void SetHardMode(bool mode)
@@ -38,9 +44,10 @@ public class GameManager : MonoBehaviour
 		hardMode = mode;
 	}
 
-	// Start is called before the first frame update
-	IEnumerator Start()
+	public IEnumerator init(bool mode)
 	{
+		hardMode = mode;
+
 		Instance = this;
 
 		yield return new WaitForSecondsRealtime(2f);
@@ -50,6 +57,16 @@ public class GameManager : MonoBehaviour
 
 		// Start the Initialization for the beginning stage of the game
 		yield return InitializeStage();
+	}
+
+	public void ResetGame()
+	{
+
+
+		currentStage = 1;
+		enemyCount = 0;
+		enemyLimit = 5;
+		playing = false;
 	}
 
 	/// <summary>
@@ -72,16 +89,18 @@ public class GameManager : MonoBehaviour
 		// NOT in Hard Mode
 		int enemyCounter = 0;
 
+		GameObject lastenemy = null;
+
 		//Spawn Enemies
 		foreach (GameObject go in enemySpawnPoints)
 		{
-			GameObject lastenemy = null;
 
 			enemyCounter++;
 			if (!hardMode)
 			{
 				// Default Mode
 				lastenemy = GameObject.Instantiate(enemy, go.transform.position, go.transform.rotation);
+				dudes.Add(lastenemy);
 
 				// If were over our enemy cap we stone spawning
 				if (enemyCounter > enemyLimit) break;
@@ -90,6 +109,7 @@ public class GameManager : MonoBehaviour
 			{
 				// Hard Mode
 				lastenemy = GameObject.Instantiate(advancedEnemy, go.transform.position, go.transform.rotation);
+				dudes.Add(lastenemy);
 			}
 
 			yield return new WaitForSeconds(0.2f);
@@ -109,7 +129,8 @@ public class GameManager : MonoBehaviour
 				enemyCounter++;
 
 				// Instantiate a tower
-				GameObject.Instantiate(towerEnemy, go.transform.position, go.transform.rotation);
+				lastenemy = GameObject.Instantiate(towerEnemy, go.transform.position, go.transform.rotation);
+				dudes.Add(lastenemy);
 				yield return new WaitForSeconds(0.2f);
 			}
 		}
@@ -117,7 +138,8 @@ public class GameManager : MonoBehaviour
 		// Spawn the BOSS
 		if (currentStage >= 3)
 		{
-			GameObject.Instantiate(bossEnemy, Vector3.zero, Quaternion.identity);
+			lastenemy = GameObject.Instantiate(bossEnemy, Vector3.zero, Quaternion.identity);
+			dudes.Add(lastenemy);
 			enemyCounter++;
 		}
 
@@ -140,8 +162,29 @@ public class GameManager : MonoBehaviour
 		if (enemyCount <= 0)
 		{
 			currentStage++;
-			StartCoroutine(InitializeStage());
+
+			if (currentStage >= 4)
+			{
+				EndGame();
+			}
+			else
+			{
+				StartCoroutine(InitializeStage());
+			}
 		}
+	}
+
+	public void EndGame()
+	{
+		ResetGame();
+
+		foreach (GameObject go in dudes)
+		{
+			Destroy(go);
+		}
+		dudes.Clear();
+
+		OtherUIManager.Instance.QuitGame();
 	}
 
 	private void OnGUI()
