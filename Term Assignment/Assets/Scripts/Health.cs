@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
                 {
                     life.lives -= 1;
                     ui.RemoveLife(); /* !!! Subtracts lives from the life bar !!! */
-
+                    
                     if (life.lives == 0)
                     {
                         Destroy(gameObject);
@@ -51,7 +51,15 @@ public class Health : MonoBehaviour
                 }
                 else
                 {
-                    Destroy(gameObject);
+                    if (tag == "Turret")
+                    {
+                        TurretController turret = GetComponent<TurretController>();
+                        StartCoroutine(turret.PlayDeath());
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
             else

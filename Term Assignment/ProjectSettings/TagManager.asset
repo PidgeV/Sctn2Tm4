@@ -9,6 +9,7 @@ TagManager:
   - GuardPoint
   - TowerSpawnPoint
   - IdleCamera
+  - Turret
   layers:
   - Default
   - TransparentFX

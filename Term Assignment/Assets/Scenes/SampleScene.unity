@@ -557,7 +557,7 @@ MonoBehaviour:
   camera: {fileID: 963194231}
   advancedEnemy: {fileID: 2955007682532598760, guid: 06f073f22c8afe14d908b7d099a77dbf,
     type: 3}
-  towerEnemy: {fileID: 6692432959512988920, guid: f06c213dd29726d4192e15c8284c5ca1,
+  towerEnemy: {fileID: 5354732920715037496, guid: 33847656cfc5deb4c946343bbf57d30c,
     type: 3}
   enemy: {fileID: 4849369692185385212, guid: e0c7fbba4a71c9f4782a638374abaec6, type: 3}
   bossEnemy: {fileID: 5057325662828973439, guid: c0f0420a5d5435b4a8395a813d21ab6e,

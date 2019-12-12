@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ccb03781d516af46927cd0acb90bb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
   life: 1
   currentLife: 0
   explosion: {fileID: 5810282733569099277, guid: c2ff583a2d059f04ebd71b8b67f04d32,
@@ -219,7 +220,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 0
-  m_Color: {r: 0, g: 1, b: 0.03938818, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_Intensity: 8893.5
   m_Range: 50
   m_SpotAngle: 88
@@ -377,6 +378,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8141746014163212292}
     m_Modifications:
+    - target: {fileID: 2084957836668031346, guid: 8b10f997061ed5b4cb0851809251c8ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Turret_Test
+      objectReference: {fileID: 0}
     - target: {fileID: 3077114973857850209, guid: 8b10f997061ed5b4cb0851809251c8ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -446,11 +452,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2084957836668031346, guid: 8b10f997061ed5b4cb0851809251c8ea,
-        type: 3}
-      propertyPath: m_Name
-      value: Turret_Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b10f997061ed5b4cb0851809251c8ea, type: 3}

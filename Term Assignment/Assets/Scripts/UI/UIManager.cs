@@ -8,13 +8,13 @@ public class UIManager : MonoBehaviour
     const float riseSpeed = 10.0f;  // The speed at which each block ascends when a hit is taken
     const float moveRight = 7.5f;
 
-    [SerializeField] private Transform      healthBase;     // The space in the UI where the health bar begins
-    [SerializeField] private RectTransform  lifeBase;       // The point in UI space where the first block will be laid
-    [SerializeField] private Health         playerHealth;   // The object that stores and manages the player's health
-    [SerializeField] private Lives          playerLives;    // The object that stores and manages the player's health
-    [SerializeField] private Color[]        colors;         // The colors that each block can have
-    [SerializeField] private GameObject     blockPrefab;    // The prefab representing a single unit of health
-    [SerializeField] private GameObject     livesPrefab;    // The prefab representing a life
+    [SerializeField] private Transform healthBase;     // The space in the UI where the health bar begins
+    [SerializeField] private RectTransform lifeBase;       // The point in UI space where the first block will be laid
+    [SerializeField] private Health playerHealth;   // The object that stores and manages the player's health
+    [SerializeField] private Lives playerLives;    // The object that stores and manages the player's health
+    [SerializeField] private Color[] colors;         // The colors that each block can have
+    [SerializeField] private GameObject blockPrefab;    // The prefab representing a single unit of health
+    [SerializeField] private GameObject livesPrefab;    // The prefab representing a life
 
     private Stack<GameObject> health;
     private Stack<GameObject> lives;
