@@ -10,6 +10,8 @@ TagManager:
   - TowerSpawnPoint
   - IdleCamera
   - Turret
+  - Enemies
+  - Landmine
   layers:
   - Default
   - TransparentFX

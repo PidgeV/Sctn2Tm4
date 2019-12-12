@@ -1,212 +1,224 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	[SerializeField] private FollowPointCameraController camera;
+    [SerializeField] private FollowPointCameraController camera;
 
-	[SerializeField] private GameObject advancedEnemy;
-	[SerializeField] private GameObject towerEnemy;
-	[SerializeField] private GameObject enemy;
-	[SerializeField] private GameObject bossEnemy;
+    [SerializeField] private GameObject advancedEnemy;
+    [SerializeField] private GameObject towerEnemy;
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject bossEnemy;
 
-	private GameObject[] enemySpawnPoints = new GameObject[0];
-	private GameObject[] towerSpawnPoints = new GameObject[0];
+    private GameObject[] enemySpawnPoints = new GameObject[0];
+    private GameObject[] towerSpawnPoints = new GameObject[0];
 
-	private List<GameObject> dudes = new List<GameObject>();
+    /// <summary> Singleton for the GameManager script </summary>
+    public static GameManager Instance;
+    GameObject enemies;
 
-	/// <summary> Singleton for the GameManager script </summary>
-	public static GameManager Instance;
+    /// <summary> What stage of the game we are on </summary>
+    public int currentStage = 1;
+    private int enemyCount = 0;
+    public int enemyLimit = 5;
 
-	/// <summary> What stage of the game we are on </summary>
-	public int currentStage = 1;
-	private int enemyCount = 0;
-	public int enemyLimit = 5;
+    /// <summary> Do we want the game in hardmode? </summary>
+    [SerializeField] private bool hardMode = false;
 
-	/// <summary> Do we want the game in hardmode? </summary>
-	[SerializeField] private bool hardMode = false;
+    public bool playing = false;
+    public bool clearing = false;
 
-	public bool playing = false;
+    // Properties
+    /// <summary> Returns if the game is finished </summary>
+    public bool GameOver { get { return enemyCount <= 0; } }
 
-	// Properties
-	/// <summary> Returns if the game is finished </summary>
-	public bool GameOver { get { return enemyCount <= 0; } }
+    private void Start()
+    {
+        Instance = this;
+    }
 
-	private void Start()
-	{
-		Instance = this;
-	}
+    //set hard mode (from the menu)  --- svitlana
+    public void SetHardMode(bool mode)
+    {
+        hardMode = mode;
+    }
 
-	//set hard mode (from the menu)  --- svitlana
-	public void SetHardMode(bool mode)
-	{
-		hardMode = mode;
-	}
+    public IEnumerator init(bool mode)
+    {
+        hardMode = mode;
 
-	public IEnumerator init(bool mode)
-	{
-		hardMode = mode;
+        Instance = this;
 
-		Instance = this;
+        yield return new WaitForSecondsRealtime(2f);
 
-		yield return new WaitForSecondsRealtime(2f);
+        towerSpawnPoints = GameObject.FindGameObjectsWithTag("TowerSpawnPoint");
+        enemySpawnPoints = GameObject.FindGameObjectsWithTag("Waypoints");
 
-		towerSpawnPoints = GameObject.FindGameObjectsWithTag("TowerSpawnPoint");
-		enemySpawnPoints = GameObject.FindGameObjectsWithTag("Waypoints");
+        // Start the Initialization for the beginning stage of the game
+        yield return InitializeStage();
+    }
 
-		// Start the Initialization for the beginning stage of the game
-		yield return InitializeStage();
-	}
+    public void ResetGame()
+    {
+        currentStage = 1;
+        enemyCount = 0;
+        enemyLimit = 5;
+        playing = false;
+    }
 
-	public void ResetGame()
-	{
+    /// <summary>
+    /// Initialize a stage of the game
+    /// Load enemy, clear bullets etc 
+    /// </summary>
+    IEnumerator InitializeStage()
+    {
+        enemies = new GameObject();
+        enemies.name = "Enemies";
 
+        camera.FollowPlayer = false;
+        HidePlayer();
 
-		currentStage = 1;
-		enemyCount = 0;
-		enemyLimit = 5;
-		playing = false;
-	}
+        // Wait a frame before starting
+        yield return null;
 
-	/// <summary>
-	/// Initialize a stage of the game
-	/// Load enemy, clear bullets etc 
-	/// </summary>
-	IEnumerator InitializeStage()
-	{
-		camera.FollowPlayer = false;
-		HidePlayer();
+        enemyCount = 0;
 
-		// Wait a frame before starting
-		yield return null;
+        Instance.playing = false;
 
-		enemyCount = 0;
+        // If we want to limit the enemy count when were..
+        // NOT in Hard Mode
+        int enemyCounter = 0;
 
-		GameManager.Instance.playing = false;
+        GameObject lastenemy = null;
 
-		// If we want to limit the enemy count when were..
-		// NOT in Hard Mode
-		int enemyCounter = 0;
+        //Spawn Enemies
+        foreach (GameObject go in enemySpawnPoints)
+        {
 
-		GameObject lastenemy = null;
+            enemyCounter++;
+            if (!hardMode)
+            {
+                // Default Mode
+                lastenemy = Instantiate(enemy, go.transform.position, go.transform.rotation);
+                lastenemy.transform.parent = enemies.transform;
 
-		//Spawn Enemies
-		foreach (GameObject go in enemySpawnPoints)
-		{
+                // If were over our enemy cap we stone spawning
+                if (enemyCounter > enemyLimit) break;
+            }
+            else
+            {
+                // Hard Mode
+                lastenemy = Instantiate(advancedEnemy, go.transform.position, go.transform.rotation);
+                lastenemy.transform.parent = enemies.transform;
+            }
 
-			enemyCounter++;
-			if (!hardMode)
-			{
-				// Default Mode
-				lastenemy = GameObject.Instantiate(enemy, go.transform.position, go.transform.rotation);
-				dudes.Add(lastenemy);
+            yield return new WaitForSeconds(0.2f);
 
-				// If were over our enemy cap we stone spawning
-				if (enemyCounter > enemyLimit) break;
-			}
-			else
-			{
-				// Hard Mode
-				lastenemy = GameObject.Instantiate(advancedEnemy, go.transform.position, go.transform.rotation);
-				dudes.Add(lastenemy);
-			}
+            // Give random life
+            if (lastenemy && lastenemy.TryGetComponent<Health>(out Health health))
+            {
+                health.currentLife = Random.Range(1, 10) <= 2 ? 1 : 2;
+            }
+        }
 
-			yield return new WaitForSeconds(0.2f);
+        // Spawn Towers
+        if (currentStage == 2)
+        {
+            foreach (GameObject go in towerSpawnPoints)
+            {
+                enemyCounter++;
 
-			// Give random life
-			if (lastenemy && lastenemy.TryGetComponent<Health>(out Health health))
-			{
-				health.currentLife = Random.Range(1, 10) <= 2 ? 1 : 2;
-			}
-		}
+                // Instantiate a tower
+                lastenemy = Instantiate(towerEnemy, go.transform.position, go.transform.rotation);
+                lastenemy.transform.parent = enemies.transform;
+                yield return new WaitForSeconds(0.2f);
+            }
+        }
 
-		// Spawn Towers
-		if (currentStage == 2)
-		{
-			foreach (GameObject go in towerSpawnPoints)
-			{
-				enemyCounter++;
+        // Spawn the BOSS
+        if (currentStage >= 3)
+        {
+            lastenemy = Instantiate(bossEnemy, Vector3.zero, Quaternion.identity);
+            lastenemy.transform.parent = enemies.transform;
+            enemyCounter++;
+        }
 
-				// Instantiate a tower
-				lastenemy = GameObject.Instantiate(towerEnemy, go.transform.position, go.transform.rotation);
-				dudes.Add(lastenemy);
-				yield return new WaitForSeconds(0.2f);
-			}
-		}
+        enemyCount = enemyCounter;
 
-		// Spawn the BOSS
-		if (currentStage >= 3)
-		{
-			lastenemy = GameObject.Instantiate(bossEnemy, Vector3.zero, Quaternion.identity);
-			dudes.Add(lastenemy);
-			enemyCounter++;
-		}
+        // Wait a frame before ending
+        yield return new WaitForSeconds(0.5f);
 
-		enemyCount = enemyCounter;
+        ShowPlayer();
+        camera.FollowPlayer = true;
+        Instance.playing = true;
+    }
 
-		// Wait a frame before ending
-		yield return new WaitForSeconds(0.5f);
+    /// <summary>
+    /// Called by each enemy in Death
+    /// </summary>
+    public void OnEnemyDeath()
+    {
+        enemyCount--;
+        if (enemyCount <= 0 && !clearing)
+        {
+            if(!clearing) currentStage++;
 
-		ShowPlayer();
-		camera.FollowPlayer = true;
-		GameManager.Instance.playing = true;
-	}
+            if (currentStage >= 4)
+            {
+                EndGame();
+            }
+            else
+            {
+                StartCoroutine(InitializeStage());
+            }
+        }
+    }
 
-	/// <summary>
-	/// Called by each enemy in Death
-	/// </summary>
-	public void OnEnemyDeath()
-	{
-		enemyCount--;
-		if (enemyCount <= 0)
-		{
-			currentStage++;
+    public void EndGame()
+    {
+        SceneManager.UnloadSceneAsync(0);
+        SceneManager.LoadScene(0);
+        //clearing = true;
+        //ResetGame();
 
-			if (currentStage >= 4)
-			{
-				EndGame();
-			}
-			else
-			{
-				StartCoroutine(InitializeStage());
-			}
-		}
-	}
+        //GameObject[] mines = GameObject.FindGameObjectsWithTag("Landmine");
+        //foreach(GameObject go in mines)
+        //{
+        //    Destroy(go);
+        //}
 
-	public void EndGame()
-	{
-		ResetGame();
+        //foreach(Transform go in enemies.transform)
+        //{
+        //    Destroy(go.gameObject);
+        //}
+        //Destroy(enemies);
 
-		foreach (GameObject go in dudes)
-		{
-			Destroy(go);
-		}
-		dudes.Clear();
+        //clearing = false;
+        //OtherUIManager.Instance.QuitGame();        
+    }
 
-		OtherUIManager.Instance.QuitGame();
-	}
+    private void OnGUI()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GUILayout.Box("Stage: " + currentStage + "\n Enemies Remaining: " + enemyCount);
+    }
 
-	private void OnGUI()
-	{
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
-		GUILayout.Box("Stage: " + currentStage + "\n Enemies Remaining: " + enemyCount);
-	}
+    private Vector3 HidePlayer()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Vector3 playerPos = player.transform.position;
 
-	private Vector3 HidePlayer()
-	{
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
-		Vector3 playerPos = player.transform.position;
+        player.transform.position = new Vector3(0, -100, 0);
 
-		player.transform.position = new Vector3(0, -100, 0);
+        return playerPos;
+    }
 
-		return playerPos;
-	}
-
-	private void ShowPlayer()
-	{
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
-		player.transform.position = new Vector3(0, 0, -65);
-		player.transform.rotation = Quaternion.identity;
-	}
+    private void ShowPlayer()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = new Vector3(0, 0, -65);
+        player.transform.rotation = Quaternion.identity;
+    }
 }

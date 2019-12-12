@@ -4478,7 +4478,7 @@ GameObject:
   - component: {fileID: 1014196883169219195}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8459,16 +8459,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4045996236670609661}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 09963488d10d5844c932d42b02cd6cba,
-        type: 3}
-      propertyPath: m_Name
-      value: bigOlArrow
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 09963488d10d5844c932d42b02cd6cba,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 09963488d10d5844c932d42b02cd6cba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8538,6 +8528,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 09963488d10d5844c932d42b02cd6cba,
+        type: 3}
+      propertyPath: m_Name
+      value: bigOlArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 09963488d10d5844c932d42b02cd6cba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 09963488d10d5844c932d42b02cd6cba,
         type: 3}

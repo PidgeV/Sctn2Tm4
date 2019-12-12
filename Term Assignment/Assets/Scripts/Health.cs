@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* !!! All changes added by me look like this -Reig !!!*/
 
@@ -43,6 +44,8 @@ public class Health : MonoBehaviour
                     if (life.lives == 0)
                     {
                         Destroy(gameObject);
+
+                        if (tag == "Player") SceneManager.LoadScene(0);
                     }
                     else
                     {

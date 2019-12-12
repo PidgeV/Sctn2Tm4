@@ -36,8 +36,8 @@ public class button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         print("Load: " + LoadLevel);
         if (!String.IsNullOrEmpty(LoadLevel))
         {
+            SceneManager.UnloadSceneAsync(0);
             SceneManager.LoadScene(LoadLevel);
-
         }
     }
 

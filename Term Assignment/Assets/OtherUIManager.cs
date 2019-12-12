@@ -73,7 +73,10 @@ public class OtherUIManager : MonoBehaviour
 
 	public void QuitGame()
 	{
-		mainMenu.SetActive(true);
+        Time.timeScale = 1;
+        mainMenu.SetActive(true);
+        GameUI.SetActive(false);
+        pauseMenu.SetActive(false);
 		GameManager.Instance.EndGame();
 	}
 }

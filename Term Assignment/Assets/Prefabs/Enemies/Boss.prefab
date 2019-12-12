@@ -205,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharNumber: 1
   turret: {fileID: 387044371213954202}
+  shotSpawnPosition: {fileID: 0}
   light: {fileID: 3452876688448990895}
   bullet: {fileID: 3957306040946835998, guid: b60592c464cddfd46be3a7319f86def1, type: 3}
   rigBody: {fileID: 0}
@@ -4723,6 +4724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharNumber: 1
   turret: {fileID: 7825885228362650553}
+  shotSpawnPosition: {fileID: 0}
   light: {fileID: 5057325662886937502}
   bullet: {fileID: 3957306040946835998, guid: b60592c464cddfd46be3a7319f86def1, type: 3}
   rigBody: {fileID: 0}
@@ -4769,7 +4771,7 @@ GameObject:
   - component: {fileID: 5057325662828973424}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9111,11 +9113,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3216050206988273723}
     m_Modifications:
-    - target: {fileID: 2084957836668031346, guid: 8b10f997061ed5b4cb0851809251c8ea,
-        type: 3}
-      propertyPath: m_Name
-      value: Turret_Test
-      objectReference: {fileID: 0}
     - target: {fileID: 3077114973857850209, guid: 8b10f997061ed5b4cb0851809251c8ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9185,6 +9182,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084957836668031346, guid: 8b10f997061ed5b4cb0851809251c8ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Turret_Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b10f997061ed5b4cb0851809251c8ea, type: 3}
@@ -9201,11 +9203,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5057325662567415908}
     m_Modifications:
-    - target: {fileID: 2084957836668031346, guid: 8b10f997061ed5b4cb0851809251c8ea,
-        type: 3}
-      propertyPath: m_Name
-      value: Turret_Test
-      objectReference: {fileID: 0}
     - target: {fileID: 3077114973857850209, guid: 8b10f997061ed5b4cb0851809251c8ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9276,6 +9273,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2084957836668031346, guid: 8b10f997061ed5b4cb0851809251c8ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Turret_Test
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b10f997061ed5b4cb0851809251c8ea, type: 3}
 --- !u!4 &7825885228362650553 stripped
@@ -9291,16 +9293,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5057325662828973424}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 09963488d10d5844c932d42b02cd6cba,
-        type: 3}
-      propertyPath: m_Name
-      value: bigOlArrow
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 09963488d10d5844c932d42b02cd6cba,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 09963488d10d5844c932d42b02cd6cba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9371,6 +9363,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 09963488d10d5844c932d42b02cd6cba,
+        type: 3}
+      propertyPath: m_Name
+      value: bigOlArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 09963488d10d5844c932d42b02cd6cba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 09963488d10d5844c932d42b02cd6cba,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9399,17 +9401,17 @@ PrefabInstance:
     - target: {fileID: 3606977694072840802, guid: 9ed3fe57f04311b4a911050745f2e0f4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.07658916
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3606977694072840802, guid: 9ed3fe57f04311b4a911050745f2e0f4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.61
+      value: 4.88
       objectReference: {fileID: 0}
     - target: {fileID: 3606977694072840802, guid: 9ed3fe57f04311b4a911050745f2e0f4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.194685
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3606977694072840802, guid: 9ed3fe57f04311b4a911050745f2e0f4,
         type: 3}
